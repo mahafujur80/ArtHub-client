@@ -37,6 +37,7 @@ export default function ArtworkForm() {
 
       const artworkData = {
         artist: user?.name,
+        artistImage: user?.image,
         artistEmail: user?.email,
         artistId:user?.id,
         title: formData.title,

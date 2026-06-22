@@ -19,14 +19,14 @@ export default function Sidebar() {
       { icon: MdDashboard, label: "Manage Artworks", path: "/dashboard/artist/manageArt" },
       { icon: MdAddBox, label: "Add Artwork", path: "/dashboard/artist/addArts" },
       { icon: MdHistory, label: "Sales History", path: "/dashboard/artist/sales" },
-      { icon: MdPerson, label: "Profile Management", path: "/dashboard/artist/profile" },
+      { icon: MdPerson, label: "Profile Management", path: "/dashboard/profile" },
     ],
 
-    user: [
-      { icon: MdSubscriptions, label: "Subscription", path: "/subscription" },
-      { icon: MdPerson, label: "Profile Management", path: "/profile" },
-      { icon: MdCollections, label: "Bought Artworks", path: "/bought-artworks" },
-      { icon: MdHistory, label: "Purchase History", path: "/purchase-history" },
+    buyer: [
+      { icon: MdHome, label: "Home", path: "/dashboard/buyer" },
+      { icon: MdCollections, label: "Bought Artworks", path: "/dashboard/buyer/bought-artworks" },
+      { icon: MdHistory, label: "Purchase History", path: "/dashboard/buyer/purchase-history" },
+      { icon: MdPerson, label: "Profile Management", path: "/dashboard/profile" },
     ],
   };
 

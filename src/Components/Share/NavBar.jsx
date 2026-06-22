@@ -8,6 +8,7 @@ import { IoClose } from "react-icons/io5";
 import { usePathname, useRouter } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
 import { NavDropdown } from "./NavDropdown";
+import toast from "react-hot-toast";
 
 
 export default function NavBar() {
@@ -20,6 +21,7 @@ export default function NavBar() {
 
     const handleLogout = async () => {
         await authClient.signOut()
+        toast.success("You have been logged out successfully")
         router.push("/");
     };
 
@@ -32,7 +34,7 @@ export default function NavBar() {
             <header className="mx-auto flex h-16  items-center justify-between px-6">
                 <div className="flex items-center gap-4">
                     <div className="flex items-center gap-3">
-                        <Logo />
+                        <Link href="/" className="no-underline"><Logo /></Link>
                     </div>
                 </div>
                 <div className="hidden md:flex items-center gap-10">
@@ -41,7 +43,7 @@ export default function NavBar() {
                             <Link href="/" className="no-underline font-medium ">Home</Link>
                         </li>
                         <li>
-                            <Link href="/arts" className="no-underline font-medium">
+                            <Link href="/artwork" className="no-underline font-medium">
                                 Browse Artworks
                             </Link>
                         </li>
@@ -73,7 +75,7 @@ export default function NavBar() {
                     <div className="border-t border-separator md:hidden">
                         <div className="flex flex-col gap-2 p-4">
                             <Link href="/" className={` ${pathName === '/' ? "text-white  bg-gradient-to-r from-[#ff7a5c] via-[#e56fb0] to-[#8a6bff]" : ''}   w-full no-underline block p-2 font-medium`}>Home</Link>
-                            <Link href="/arts" className={` ${pathName === '/arts' ? "text-white  bg-gradient-to-r from-[#ff7a5c] via-[#e56fb0] to-[#8a6bff]" : ''}  w-full no-underline block p-2 font-medium`}>Browse Artworks</Link>
+                            <Link href="/artwork" className={` ${pathName === '/artwork' ? "text-white  bg-gradient-to-r from-[#ff7a5c] via-[#e56fb0] to-[#8a6bff]" : ''}  w-full no-underline block p-2 font-medium`}>Browse Artworks</Link>
                         </div>
                         {
                             user ? <div className='p-4'>
@@ -95,7 +97,7 @@ export default function NavBar() {
                                     </div>
                                     <Dropdown.Menu>
                                         <Dropdown.Item id="dashboard" textValue="Dashboard">
-                                            <Label>Dashboard</Label>
+                                            <Link href={`/dashboard/${user?.role}`} ><Label>Dashboard</Label></Link>
                                         </Dropdown.Item>
                                         <Dropdown.Item id="logout" textValue="Logout" variant="danger">
                                             <div onClick={handleLogout} className="flex w-full items-center justify-between gap-2">

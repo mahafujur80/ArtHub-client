@@ -1,7 +1,6 @@
 import UpdatePasswordModal from "@/Components/Dashboard/Porfile/PasswordChangeModal";
 import { UpdateProfileModal } from "@/Components/Dashboard/Porfile/UpdatePorfileModal";
 import { getServerSession } from "@/lib/server/getServerSession";
-import { Button } from "@heroui/react";
 import Image from "next/image";
 import { FiEdit, FiLock, FiMail, FiCalendar, FiShield,FiCheckCircle, FiXCircle } from "react-icons/fi";
 

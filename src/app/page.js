@@ -3,7 +3,7 @@ import React from 'react';
 
 const MainPage = () => {
   return (
-    <div>
+    <div className='min-h-screen bg-[#f8f4ef] py-20'>
       <Hero/>
     </div>
   );
