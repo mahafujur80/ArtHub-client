@@ -1,12 +1,16 @@
+import Image from "next/image";
+
 export default function ArtCard({ art }) {
   return (
     <div className="group w-full max-w-sm bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 border">
 
       {/* Image Section */}
       <div className="relative h-52 overflow-hidden">
-        <img
+        <Image
           src={art.image}
           alt={art.title}
+          width={500}
+          height={500}
           className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
         />
 

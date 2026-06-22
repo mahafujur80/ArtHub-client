@@ -18,7 +18,7 @@ export default function Sidebar() {
       { icon: MdHome, label: "Home", path: "/dashboard/artist" },
       { icon: MdDashboard, label: "Manage Artworks", path: "/dashboard/artist/manageArt" },
       { icon: MdAddBox, label: "Add Artwork", path: "/dashboard/artist/addArts" },
-      { icon: MdHistory, label: "Sales History", path: "/dashboard/sales" },
+      { icon: MdHistory, label: "Sales History", path: "/dashboard/artist/sales" },
       { icon: MdPerson, label: "Profile Management", path: "/dashboard/artist/profile" },
     ],
 

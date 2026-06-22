@@ -3,6 +3,7 @@
 import { updateArtwork } from "@/lib/server/artist";
 import { UploadImage } from "@/lib/server/UploadImage";
 import { Button, Input, Label, Modal, Surface, TextField } from "@heroui/react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
@@ -147,7 +148,9 @@ export function ArtsEditModal({ art }) {
 
                                         <label className="flex cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed border-gray-300 p-8 transition hover:border-orange-500">
                                             <div className="mb-3">
-                                                <img
+                                                <Image
+                                                    width={100}
+                                                    height={100}
                                                     src={art?.image}
                                                     alt={art?.title}
                                                     className="h-32 w-32 rounded-lg object-cover"
