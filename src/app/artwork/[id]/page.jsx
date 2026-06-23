@@ -1,4 +1,6 @@
 import { getArtworkById } from "@/lib/api/artwork";
+import { getPlans } from "@/lib/api/plans";
+import { getMyPurchases } from "@/lib/api/purchase";
 import { getServerSession } from "@/lib/server/getServerSession";
 import Image from "next/image";
 import Link from "next/link";
@@ -14,6 +16,8 @@ const ArtworkDetailPage = async ({ params }) => {
   const { id } = await params;
   const art = await getArtworkById(id)
   const user = await getServerSession()
+  const plan = await getPlans(user?.plan)
+  const purchases = await getMyPurchases(user?.id)
   // Check if current user is the artist
   const isArtist = user?.id === art.artistId;
 
@@ -150,21 +154,29 @@ const ArtworkDetailPage = async ({ params }) => {
                 </div>
               ) : (
                 <form action="/api/payments" method="POST">
-                  <div className="w-full bg-white text-orange-600 hover:bg-orange-50 font-bold py-4 px-6 rounded-xl transition-all duration-300 transform hover:scale-[1.02] hover:shadow-xl flex items-center justify-center gap-3 group cursor-pointer">
+                  <div className="w-full bg-white text-orange-600 hover:bg-orange-50 font-bold  rounded-xl transition-all duration-300 transform hover:scale-[1.02] hover:shadow-xl flex items-center justify-center gap-3 group cursor-pointer">
 
-                    <FaShoppingCart className="w-5 h-5 transition-transform group-hover:-translate-x-1" />
-  
-                  <input name="price" type="hidden" value={art.price} />
-                  <input name="artworkName" type="hidden" value={art.title} />
-                  <input name="artistName" type="hidden" value={art.artist} />
-                  <input name="artistId" type="hidden" value={art.artistId} />
-                    <button type="submit">
-                      Purchase Now
-                    </button>
+                    <input name="price" type="hidden" value={art.price} />
+                    <input name="artworkName" type="hidden" value={art.title} />
+                    <input name="artistName" type="hidden" value={art.artist} />
+                    <input name="artistId" type="hidden" value={art.artistId} />
+                    <input name="artworkId" type="hidden" value={art._id} />
+                    <input name="image" type="hidden" value={art.image} />
 
-                    <span className="ml-auto text-sm bg-orange-100 px-3 py-1 rounded-full group-hover:bg-orange-200 transition-colors">
-                      ${art.price}
-                    </span>
+                    {
+                      plan.maxPurchase !== -1 &&
+                        purchases.length >= plan.maxPurchase ?
+                        <Link href="/pricing">
+                          <button className="w-full  p-4">
+                            Upgrade Now For More Purchase
+                          </button>
+                        </Link>
+                        :
+                        <button type="submit" className="w-full flex items-center justify-center gap-5 p-4">
+                          Purchase Now
+                          <FaShoppingCart className="w-5 h-5 transition-transform group-hover:-translate-x-1" />
+                        </button>
+                    }
 
                   </div>
                 </form>

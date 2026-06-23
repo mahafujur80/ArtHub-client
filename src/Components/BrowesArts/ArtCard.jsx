@@ -5,7 +5,7 @@ import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 export default function ArtCard({ art }) {
   return (
     <Link href={`/artwork/${art._id}`}>
-      <div className="group w-full max-w-sm bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 border border-orange-100 hover:border-orange-300">
+      <div className="cursor-pointer group w-full max-w-sm bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 border border-orange-100 hover:border-orange-300">
 
         {/* Image Section */}
         <div className="relative h-52 overflow-hidden">
@@ -36,16 +36,18 @@ export default function ArtCard({ art }) {
 
           {/* Artist with orange dot */}
           <p className="text-sm text-gray-500 flex items-center gap-1">
-            <span className="font-semibold"> Arts By: </span> 
-             {art.artist || "Unknown Artist"}
+            <span className="font-semibold"> Arts By: </span>
+            {art.artist || "Unknown Artist"}
           </p>
 
           {/* View Details Button */}
-          <div className="pt-2">
-            <button className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2.5 px-4 rounded-xl transition-all duration-300 transform group-hover:scale-[1.02] shadow-md hover:shadow-orange-200/50 flex items-center justify-center gap-2">
-              <span>View Details</span>
-              <MdOutlineKeyboardArrowRight className="w-5 h-5" />
-            </button>
+          <div className="pt-2 ">
+            <Link href={`/artwork/${art._id}`}>
+              <button className=" w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2.5 px-4 rounded-xl transition-all duration-300 transform group-hover:scale-[1.02] shadow-md hover:shadow-orange-200/50 flex items-center justify-center gap-2">
+                <span>View Details</span>
+                <MdOutlineKeyboardArrowRight className="w-5 h-5" />
+              </button>
+            </Link>
           </div>
 
         </div>

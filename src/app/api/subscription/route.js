@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server'
+ import { NextResponse } from 'next/server'
 import { headers } from 'next/headers'
 
 import { stripe } from '../../../lib/stripe'
@@ -11,13 +11,14 @@ export async function POST(request) {
 
     const user = await getServerSession()
     const formData = await request.formData()
-    const amount = formData.get('price')
-    const artworkName = formData.get('artworkName')
-    const artistId = formData.get('artistId')
-    const artistName = formData.get('artistName')
-    const artworkId = formData.get('artworkId')
-    const image = formData.get('image')
+    const priceId = formData.get('priceId')
+    const amount = formData.get('amount')
 
+    const price= {
+        pro: "price_1TlJ9ZPqO8P30Ol4RCLb9Hqm",
+        premium: "price_1TlJBsPqO8P30Ol4feplkBq7",
+    }
+    const activePrice = price[priceId]
 
     // Create Checkout Sessions from body params.
     const session = await stripe.checkout.sessions.create({
@@ -25,29 +26,20 @@ export async function POST(request) {
       line_items: [
         {
           // Provide the exact Price ID (for example, price_1234) of the product you want to sell
-          price_data:{
-            currency: 'usd',
-            product_data: {
-              name: 'Artwork',
-            },
-            unit_amount: Number(price) * 100,
-          },
+          price: activePrice,
           quantity: 1,
         },
       ],
       metadata:{
-      type: 'payment',
-       amount,
-       artworkName,
-       artistName,
+       type: 'subscription',
+       priceId,
        buyerName: user?.name,
        buyerId: user?.id,
-       artistId,
-       artworkId,
-       image,
+       amount
       },
-      mode: 'payment',
-      success_url: `${origin}/pricing/success?session_id={CHECKOUT_SESSION_ID}`,
+
+      mode: 'subscription',
+      success_url: `${origin}/pricing/premium_success?session_id={CHECKOUT_SESSION_ID}`,
     });
     return NextResponse.redirect(session.url, 303)
   } catch (err) {
