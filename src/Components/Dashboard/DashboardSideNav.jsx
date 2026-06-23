@@ -27,7 +27,6 @@ export default function Sidebar() {
       { icon: MdCollections, label: "Bought Artworks", path: "/dashboard/buyer/bought-artworks" },
       { icon: MdHistory, label: "Purchase History", path: "/dashboard/buyer/purchase-history" },
       { icon: MdPerson, label: "Profile Management", path: "/dashboard/profile" },
-      { icon: MdSettings, label: "Subscription Settings", path: "/dashboard/buyer/subscription" },
     ],
   };
 
@@ -39,7 +38,7 @@ export default function Sidebar() {
       {/* Logo / Title */}
       <div className="mb-8 px-2">
         <h1 className="text-2xl font-bold text-orange-500">
-          {user?.role === "artist" ? "Artist" : user?.role === 'admin' ? "Admin" : user?.role === 'buyer' ? "Buyer" : " "} Panel
+          {user?.role === "artist" ? "Artist" : user?.role === 'admin' ? "Admin" : user?.role === 'buyer' ? "Buyer" : " "} Dashboard
         </h1>
         <p className="text-sm text-slate-500">
           {

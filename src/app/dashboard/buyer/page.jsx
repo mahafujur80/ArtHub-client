@@ -94,7 +94,7 @@ export default async function BuyerOverview() {
         <div className="grid gap-4 md:grid-cols-3">
 
           <Link
-            href="/dashboard/purchase-history"
+            href="/dashboard/buyer/purchase-history"
             className="bg-orange-500 hover:bg-orange-600 text-white rounded-2xl p-6 transition"
           >
             <h3 className="font-semibold text-lg">
@@ -107,7 +107,7 @@ export default async function BuyerOverview() {
           </Link>
 
           <Link
-            href="/dashboard/bought-artworks"
+            href="/dashboard/buyer/bought-artworks"
             className="bg-white border rounded-2xl p-6 hover:border-orange-500 transition"
           >
             <h3 className="font-semibold text-lg">
