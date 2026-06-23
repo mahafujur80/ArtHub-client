@@ -1,5 +1,6 @@
-import { createPayment } from '@/lib/server/payments'
+import { createSubscription } from '@/lib/server/payments'
 import { stripe } from '@/lib/stripe'
+import Link from 'next/link';
 import { redirect } from 'next/navigation'
 import { FaCrown, FaCheckCircle, FaRocket } from "react-icons/fa";
 
@@ -23,7 +24,7 @@ export default async function Success({ searchParams }) {
     }
 
     if (status === 'complete') {
-        await createPayment({ ...metadata, sessionId: session_id })
+         createSubscription({ ...metadata, sessionId: session_id })
 
         return (
             <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-orange-50 to-white px-4">
@@ -88,19 +89,19 @@ export default async function Success({ searchParams }) {
 
                     {/* Buttons */}
                     <div className="flex flex-col sm:flex-row gap-4">
-                        <a
-                            href="/dashboard"
+                        <Link
+                            href="/dashboard/buyer"
                             className="flex-1 bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 rounded-xl transition"
                         >
                             Go To Dashboard
-                        </a>
+                        </Link>
 
-                        <a
-                            href="/arts"
+                        <Link
+                            href="/artwork"
                             className="flex-1 border border-orange-500 text-orange-500 hover:bg-orange-50 font-semibold py-3 rounded-xl transition"
                         >
                             Explore Artworks
-                        </a>
+                        </Link>
                     </div>
 
                 </div>

@@ -28,7 +28,7 @@ export default async function Success({ searchParams }) {
         ...metadata,
         sessionId: session_id,
     }
-  await createPayment(paymentsObj)
+    createPayment(paymentsObj)
     
     return (
       <section className="min-h-screen  flex items-center justify-center px-4">

@@ -30,7 +30,7 @@ export async function POST(request) {
             product_data: {
               name: 'Artwork',
             },
-            unit_amount: Number(price) * 100,
+            unit_amount: Number(amount) * 100,
           },
           quantity: 1,
         },

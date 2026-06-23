@@ -27,6 +27,7 @@ export default function Sidebar() {
       { icon: MdCollections, label: "Bought Artworks", path: "/dashboard/buyer/bought-artworks" },
       { icon: MdHistory, label: "Purchase History", path: "/dashboard/buyer/purchase-history" },
       { icon: MdPerson, label: "Profile Management", path: "/dashboard/profile" },
+      { icon: MdSettings, label: "Subscription Settings", path: "/dashboard/buyer/subscription" },
     ],
   };
 
