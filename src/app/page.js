@@ -1,10 +1,12 @@
 import Hero from '@/Components/HomePage/Hero';
+import TopArtists from '@/Components/HomePage/TopArtist';
 import React from 'react';
 
 const MainPage = () => {
   return (
-    <div className='min-h-screen bg-[#f8f4ef] py-20'>
+    <div className='min-h-screen  py-5'>
       <Hero/>
+      <TopArtists/>
     </div>
   );
 };

@@ -5,13 +5,18 @@ import ArtworkCard from './ArtWorkCard';
 import { Pagination } from '@heroui/react';
 import Link from 'next/link';
 
-const BoughtArtworks = async () => {
+const BoughtArtworks = async ({searchParams}) => {
+    const {page} = await searchParams;
     const user = await getServerSession()
-    const myArtworks = await getMyPurchases(user?.id)
+    const artWorkData = await getMyPurchases(user?.id, page)
+    const myArtworks = artWorkData?.data;
 
-    const currentPage = 2;
-    const pages = [1, 2, 3]
-    const totalPages = Array.length;
+    const currentPage = artWorkData?.page;
+    const totalPages = artWorkData?.totalPage;
+    const pages = []
+    for(let i = 1; i <= totalPages; i++) {
+        pages.push(i)
+    }
 
     return (
         <div className="p-4">
@@ -21,15 +26,15 @@ const BoughtArtworks = async () => {
                     myArtworks.map(artwork => <ArtworkCard artwork={artwork} key={artwork?._id} />)
                 }
             </div>
-            <div className="py-10">
-                <Pagination size="sm" className="flex justify-center">
-                    <Pagination.Content>
+            <div className="pt-5">
+                <Pagination size="md">
+                    <Pagination.Content className="w-full flex justify-center">
                         <Pagination.Item>
                             <Pagination.Previous
                                 isDisabled={currentPage === 1}
                                 className="hover:!bg-orange-500 group"
                             >
-                                <Link className='flex gap-2 group-hover:!text-white' href={`/dashboard/buyer/purchase-history?page=${currentPage - 1}`}>
+                                <Link className='flex gap-2 group-hover:!text-white' href={`/dashboard/buyer/bought-artworks?page=${currentPage - 1}`}>
                                     <Pagination.PreviousIcon />
                                     Prev
                                 </Link>
@@ -37,7 +42,7 @@ const BoughtArtworks = async () => {
                         </Pagination.Item>
                         {pages.map((p) => (
                             <Pagination.Item key={p}>
-                                <Link href={`/dashboard/buyer/purchase-history?page=${p}`}>
+                                <Link href={`/dashboard/buyer/bought-artworks?page=${p}`}>
                                     <Pagination.Link isActive={p === currentPage} className={p === currentPage ? "!bg-orange-500 !text-white" : "!bg-white !text-orange-500" }>
                                         {p}
                                     </Pagination.Link>
@@ -49,7 +54,7 @@ const BoughtArtworks = async () => {
                                 isDisabled={currentPage === totalPages}
                                 className="hover:!bg-orange-500 group"
                             >
-                                <Link className='flex gap-2  group-hover:!text-white' href={`/dashboard/buyer/purchase-history?page=${currentPage + 1}`}>
+                                <Link className='flex gap-2  group-hover:!text-white' href={`/dashboard/buyer/bought-artworks?page=${currentPage + 1}`}>
                                     Next
                                     <Pagination.NextIcon />
                                 </Link>

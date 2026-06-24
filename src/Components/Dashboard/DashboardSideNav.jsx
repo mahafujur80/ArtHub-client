@@ -15,15 +15,15 @@ export default function Sidebar() {
 
   const navItems = {
     artist: [
-      { icon: MdHome, label: "Home", path: "/dashboard/artist" },
-      { icon: MdDashboard, label: "Manage Artworks", path: "/dashboard/artist/manageArt" },
+      { icon: MdDashboard , label: "Overview", path: "/dashboard/artist" },
+      { icon: MdCollections, label: "Manage Artworks", path: "/dashboard/artist/manageArtworks" },
       { icon: MdAddBox, label: "Add Artwork", path: "/dashboard/artist/addArts" },
       { icon: MdHistory, label: "Sales History", path: "/dashboard/artist/sales" },
       { icon: MdPerson, label: "Profile Management", path: "/dashboard/profile" },
     ],
 
     buyer: [
-      { icon: MdHome, label: "Home", path: "/dashboard/buyer" },
+      { icon: MdDashboard , label: "Overview", path: "/dashboard/buyer" },
       { icon: MdCollections, label: "Bought Artworks", path: "/dashboard/buyer/bought-artworks" },
       { icon: MdHistory, label: "Purchase History", path: "/dashboard/buyer/purchase-history" },
       { icon: MdPerson, label: "Profile Management", path: "/dashboard/profile" },

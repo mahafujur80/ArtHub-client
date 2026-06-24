@@ -43,7 +43,7 @@ export default function ArtworkForm() {
         title: formData.title,
         description: formData.description,
         price: Number(formData.price),
-        category: formData.category,
+        category: formData.category.toLowerCase(),
         image: imageData.url,
       };
       const res = await createArtwork(artworkData);

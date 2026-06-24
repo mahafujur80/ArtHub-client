@@ -1,5 +1,5 @@
+import { getMyTotalPurchase } from "@/lib/api/buyer";
 import { getPlans } from "@/lib/api/plans";
-import { getMyPurchases } from "@/lib/api/purchase";
 import { getServerSession } from "@/lib/server/getServerSession";
 import Link from "next/link";
 import { FaShoppingBag, FaCrown, FaMoneyBillWave, FaArrowRight } from "react-icons/fa";
@@ -8,11 +8,11 @@ export default async function BuyerOverview() {
 
      const user = await getServerSession()
       const planLimits = await getPlans(user?.plan)
-      const purchases = await getMyPurchases(user?.id)
+      const purchases = await getMyTotalPurchase(user?.id) 
 
 
-  const purchaseCount = purchases.length;
-  const remainingPurchases = planLimits.maxPurchase === -1 ? "Unlimited" : planLimits.maxPurchase - purchaseCount;
+  const purchaseCount = purchases.length; //  // data from pagination
+  const remainingPurchases = planLimits.maxPurchase === -1 ? "Unlimited" : planLimits.maxPurchase - purchaseCount < 0 && 0;
 
   return (
     <div className="space-y-8 p-4">

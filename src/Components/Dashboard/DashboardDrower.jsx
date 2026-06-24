@@ -25,19 +25,19 @@ export function DashboardDrawer() {
 
   const navItems = {
     artist: [
-      { icon: MdHome, label: "Home", path: "/dashboard/artist" },
-      { icon: MdDashboard, label: "Manage Artworks", path: "/dashboard/artist/manageArt" },
+      { icon: MdDashboard , label: "Overview", path: "/dashboard/artist" },
+      { icon: MdCollections, label: "Manage Artworks", path: "/dashboard/artist/manageArtworks" },
       { icon: MdAddBox, label: "Add Artwork", path: "/dashboard/artist/addArts" },
       { icon: MdHistory, label: "Sales History", path: "/dashboard/artist/sales" },
       { icon: MdPerson, label: "Profile Management", path: "/dashboard/artist/profile" },
     ],
 
-    user: [
-      { icon: MdSubscriptions, label: "Subscription", path: "/subscription" },
-      { icon: MdPerson, label: "Profile Management", path: "/profile" },
-      { icon: MdCollections, label: "Bought Artworks", path: "/bought-artworks" },
-      { icon: MdHistory, label: "Purchase History", path: "/purchase-history" },
-    ],
+    buyer: [
+          { icon: MdDashboard , label: "Overview", path: "/dashboard/buyer" },
+          { icon: MdCollections, label: "Bought Artworks", path: "/dashboard/buyer/bought-artworks" },
+          { icon: MdHistory, label: "Purchase History", path: "/dashboard/buyer/purchase-history" },
+          { icon: MdPerson, label: "Profile Management", path: "/dashboard/profile" },
+      ],
   };
 
   const activeNavItems = navItems[user?.role] || [];

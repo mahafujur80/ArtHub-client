@@ -3,19 +3,19 @@ import Link from "next/link";
 
 export default function HeroSection() {
   return (
-    <section className="min-h-screen bg-[#f8f4ef] flex items-center py-5">
+    <section className=" flex items-center py-5">
       <div className="container mx-auto px-6">
         <div className="grid items-center gap-12 lg:grid-cols-2">
           
           {/* Left Content */}
           <div>
-            <span className="inline-flex items-center rounded-full bg-white px-4 py-2 text-sm font-medium shadow-sm">
+            <span className="inline-flex items-center rounded-full  px-4 py-2 text-sm font-medium shadow-sm">
               🎨 Original Artworks
             </span>
 
             <h1 className="mt-6 text-3xl md:text-5xl font-bold leading-tight text-slate-900 ">
               Discover & Buy <br />
-              <span className="bg-gradient-to-r from-[#ff7a5c] via-[#e56fb0] to-[#8a6bff] bg-clip-text text-transparent">
+              <span className="text-orange-500">
                 Original
               </span> Art
             </h1>
@@ -26,7 +26,7 @@ export default function HeroSection() {
             </p>
 
             <Link href="/artworks">
-              <button className="mt-8 rounded-xl bg-gradient-to-r from-[#ff7a5c] via-[#e56fb0] to-[#8a6bff] px-8 py-4 text-lg font-semibold text-white transition hover:opacity-90 hover:scale-105">
+              <button className="mt-8 rounded-xl bg-orange-500 px-8 py-4 text-lg font-semibold text-white transition hover:opacity-90 hover:scale-105">
                 Browse Artworks
               </button>
             </Link>
@@ -52,7 +52,7 @@ export default function HeroSection() {
 
           {/* Right Image */}
           <div className="relative flex justify-center lg:justify-end">
-            <div className="absolute -left-6 top-10 h-64 w-64 rounded-full bg-gradient-to-r from-[#ff7a5c] via-[#e56fb0] to-[#8a6bff] blur-3xl opacity-40" />
+            <div className="absolute  h-64 w-64 rounded-full bg-orange-200 blur-3xl opacity-35" />
             
             <div className="relative z-10 w-full max-w-md aspect-square">
               <Image

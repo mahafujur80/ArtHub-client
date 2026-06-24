@@ -70,14 +70,14 @@ const PurchaseHistory = async ({ searchParams }) => {
                         </Table.Content>
                     </Table.ScrollContainer>
                     <Table.Footer >
-                        <Pagination size="sm" className="flex justify-center">
-                            <Pagination.Content>
+                        <Pagination size="sm" >
+                            <Pagination.Content className="w-full flex justify-center">
                                 <Pagination.Item>
                                     <Pagination.Previous
                                         isDisabled={currentPage === 1}
-                                        className="hover:!bg-white"
+                                        className="hover:!bg-white group"
                                     >
-                                        <Link className='flex gap-2 text-white hover:!text-orange-500' href={`/dashboard/buyer/purchase-history?page=${currentPage - 1}`}>
+                                        <Link className='flex gap-2 text-white group-hover:!text-orange-500' href={`/dashboard/buyer/purchase-history?page=${currentPage - 1}`}>
                                         <Pagination.PreviousIcon />
                                         Prev
                                         </Link>
@@ -95,9 +95,9 @@ const PurchaseHistory = async ({ searchParams }) => {
                                 <Pagination.Item>
                                     <Pagination.Next
                                         isDisabled={currentPage === totalPages}
-                                        className="hover:!bg-white"
+                                        className="hover:!bg-white group"
                                     >
-                                       <Link className='flex gap-2 text-white hover:!text-orange-500' href={`/dashboard/buyer/purchase-history?page=${currentPage + 1}`}>
+                                       <Link className='flex gap-2 text-white group-hover:!text-orange-500' href={`/dashboard/buyer/purchase-history?page=${currentPage + 1}`}>
                                         Next
                                         <Pagination.NextIcon />
                                        </Link>
