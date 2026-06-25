@@ -154,7 +154,7 @@ const ArtworkDetailPage = async ({ params }) => {
                   </div>
                 </div>
               ) : (
-                <form action="/api/payments" method="POST">
+                <form action={!user?.id ? `/login?redirect=/artwork/${art._id}` : "/api/payments"} method="POST">
                   <div className="w-full bg-white text-orange-600 hover:bg-orange-50 font-bold  rounded-xl transition-all duration-300 transform hover:scale-[1.02] hover:shadow-xl flex items-center justify-center gap-3 group cursor-pointer">
 
                     <input name="price" type="hidden" value={art?.price} />
@@ -165,13 +165,14 @@ const ArtworkDetailPage = async ({ params }) => {
                     <input name="image" type="hidden" value={art?.image} />
 
                     {
-                      plan.maxPurchase !== -1 &&
-                        purchases.length >= plan.maxPurchase ?
+                      plan?.maxPurchase !== -1 &&
+                        purchases?.length >= plan?.maxPurchase ?
                         <Link href="/pricing">
                           <button className="w-full  p-4">
                             Upgrade Now For More Purchase
                           </button>
                         </Link>
+                        
                         :
                         <button type="submit" className="w-full flex items-center justify-center gap-5 p-4">
                           Purchase Now

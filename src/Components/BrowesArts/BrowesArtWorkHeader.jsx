@@ -37,6 +37,7 @@ export default function BrowseArtworkHeader() {
     const searchParams = useSearchParams();
     const handleSearch = () => {
         const params = new URLSearchParams(searchParams.toString());
+        params.set("page", 1);
 
         if (search) {
             params.set("search", search);

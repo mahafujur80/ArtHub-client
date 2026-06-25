@@ -1,6 +1,6 @@
 "use client";
 
-import { MdHome, MdDashboard, MdCollections, MdSubscriptions, MdAddBox, MdEdit, MdHistory, MdPerson, MdSettings } from "react-icons/md";
+import { MdPayments, MdPeople, MdDashboard, MdCollections, MdSubscriptions, MdAddBox, MdEdit, MdHistory, MdPerson, MdSettings } from "react-icons/md";
 
 
 import Link from "next/link";
@@ -28,6 +28,12 @@ export default function Sidebar() {
       { icon: MdHistory, label: "Purchase History", path: "/dashboard/buyer/purchase-history" },
       { icon: MdPerson, label: "Profile Management", path: "/dashboard/profile" },
     ],
+    admin:[
+      { icon: MdDashboard , label: "Analytics Overview", path: "/dashboard/admin" },
+      { icon: MdPeople, label: "Manage Users", path: "/dashboard/admin/manage-users" },
+      { icon: MdCollections, label: "Manage All Artworks", path: "/dashboard/admin/manage-artworks" },
+      { icon: MdPayments, label: "View All Transactions", path: "/dashboard/admin/transactions" },
+   ],
   };
 
   const activeNavItems = navItems[user?.role] || [];

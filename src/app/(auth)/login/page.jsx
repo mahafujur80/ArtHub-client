@@ -13,7 +13,7 @@ import {
 } from "@heroui/react";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
 
@@ -25,6 +25,8 @@ import { FcGoogle } from "react-icons/fc";
 const LoginPage = () => {
 
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const redirect = searchParams.get("redirect");
 
   const [isVisible, setIsVisible] = useState(false);
 
@@ -42,7 +44,7 @@ const LoginPage = () => {
  console.log(error, data)
     if (data) {
       toast.success("Welcome back");
-      router.push("/");
+      router.push(redirect || "/");
     } else {
       toast.error(error.message);
     }

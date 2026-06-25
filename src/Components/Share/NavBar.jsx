@@ -15,9 +15,11 @@ export default function NavBar() {
     const { data: session } = authClient.useSession()
     const user = session?.user;
 
+
     const router = useRouter();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const pathName = usePathname();
+
 
     const handleLogout = async () => {
         await authClient.signOut()
@@ -40,17 +42,17 @@ export default function NavBar() {
                 <div className="hidden md:flex items-center gap-10">
                     <ul className="items-center gap-4 flex">
                         <li>
-                            <Link href="/" className="no-underline font-medium ">Home</Link>
+                            <Link href="/" className={`${pathName === '/' ? "text-white  bg-orange-500 hover:text-white" : ''}  no-underline font-medium py-2 px-4 hover:text-orange-500`}>Home</Link>
                         </li>
                         <li>
-                            <Link href="/artwork" className="no-underline font-medium">
+                            <Link href="/artwork" className={`${pathName === '/artwork' ? "text-white  bg-orange-500 hover:text-white" : ''}  no-underline font-medium py-2 px-4 hover:text-orange-500`}>
                                 Browse Artworks
                             </Link>
                         </li>
                     </ul>
 
                     {
-                        user ? <NavDropdown user={user} /> :
+                        user?.id ? <NavDropdown user={user} /> :
                             <div className=" items-center gap-4 flex">
                                 <Link href="/login" className="no-underline font-medium"> <Button variant="outline">Login</Button></Link>
                                 <Link href="/signup" className="no-underline" > <Button className=" text-white bg-gradient-to-r from-[#ff7a5c] via-[#e56fb0] to-[#8a6bff]">Sign Up</Button> </Link>
@@ -74,8 +76,8 @@ export default function NavBar() {
                 isMenuOpen && (
                     <div className="border-t border-separator md:hidden">
                         <div className="flex flex-col gap-2 p-4">
-                            <Link href="/" className={` ${pathName === '/' ? "text-white  bg-gradient-to-r from-[#ff7a5c] via-[#e56fb0] to-[#8a6bff]" : ''}   w-full no-underline block p-2 font-medium`}>Home</Link>
-                            <Link href="/artwork" className={` ${pathName === '/artwork' ? "text-white  bg-gradient-to-r from-[#ff7a5c] via-[#e56fb0] to-[#8a6bff]" : ''}  w-full no-underline block p-2 font-medium`}>Browse Artworks</Link>
+                            <Link href="/" className={` ${pathName === '/' ? "text-white  bg-orange-500" : ''}   w-full no-underline block p-2 font-medium`}>Home</Link>
+                            <Link href="/artwork" className={` ${pathName === '/artwork' ? "text-white  bg-orange-500" : ''}  w-full no-underline block p-2 font-medium`}>Browse Artworks</Link>
                         </div>
                         {
                             user ? <div className='p-4'>

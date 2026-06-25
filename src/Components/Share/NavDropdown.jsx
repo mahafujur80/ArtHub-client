@@ -14,7 +14,7 @@ export function NavDropdown({ user }) {
     router.push("/");
   };
 
-  const dashboardLink = user?.role === "artist" ? "/dashboard/artist" : "/dashboard/buyer";
+  const dashboardLink = user?.role === "artist" ? "/dashboard/artist" : user?.role === "buyer"? "/dashboard/buyer" : user?.role === "admin"? "/dashboard/admin": '/unauthorize';
 
   return (
     <Dropdown>
