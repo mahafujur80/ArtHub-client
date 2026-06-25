@@ -7,9 +7,9 @@ const PricingCards = () => {
             id: "free",
             name: "Free",
             icon: <FaStar className="w-8 h-8" />,
-            price: "$0",
+            price: 0,
             description: "Perfect for art enthusiasts",
-            maxPurchases: "3",
+            maxPurchases: 3,
             features: [
                 "Browse and discover artworks",
                 "Purchase up to 3 paintings",
@@ -24,9 +24,9 @@ const PricingCards = () => {
             id: "pro",
             name: "Pro",
             icon: <FaRocket className="w-8 h-8" />,
-            price: "$9.99",
+            price: 9.99,
             description: "For serious art collectors",
-            maxPurchases: "9",
+            maxPurchases: 9,
             features: [
                 "Everything in Free tier",
                 "Purchase up to 9 paintings",
@@ -42,7 +42,7 @@ const PricingCards = () => {
             id: "premium",
             name: "Premium",
             icon: <FaCrown className="w-8 h-8" />,
-            price: "$19.99",
+            price: 19.99,
             description: "For collectors and investors",
             maxPurchases: "Unlimited",
             features: [
@@ -104,7 +104,7 @@ const PricingCards = () => {
                                 <div className="text-center mb-6">
                                     <div className="flex items-center justify-center gap-1">
                                         <span className="text-5xl font-bold text-gray-900">
-                                            {tier.price}
+                                            ${tier.price}
                                         </span>
                                         <span className="text-gray-500 text-sm">/month</span>
                                     </div>
@@ -119,7 +119,7 @@ const PricingCards = () => {
                                         <span className="text-sm font-medium text-orange-600">
                                             {tier.maxPurchases === "Unlimited"
                                                 ? "Unlimited purchases"
-                                                : `Up to ${tier.maxPurchases} purchases`}
+                                                : `Up to {tier.maxPurchases} purchases`}
                                         </span>
                                     </div>
                                 </div>
