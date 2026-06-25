@@ -17,7 +17,7 @@ export default async function ArtistOverview() {
   const totalArtworks = artWorkData.totalData;
 
   const recentArtworks = artWorkData.allArtwork.slice(0, 3);
-  console.log();
+  
 
 
   const revenue = allSales.reduce((total, price) => total + Number(price.amount), 0);

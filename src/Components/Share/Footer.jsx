@@ -1,3 +1,5 @@
+'use client';
+
 import Link from "next/link";
 import {
     FaFacebookF,
@@ -7,8 +9,16 @@ import {
     FaYoutube,
 } from "react-icons/fa";
 import Logo from "./Logo";
+import { usePathname } from "next/navigation";
 
 export default function Footer() {
+
+    // no access in dashboard
+    const pathName = usePathname();
+    if(pathName.includes('dashboard')){ 
+        return
+    }
+
     return (
         <footer className="bg-black text-white  border-t border-white/10">
             <div className="container mx-auto px-6 py-10">
