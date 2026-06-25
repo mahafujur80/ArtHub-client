@@ -24,7 +24,7 @@ export default async function Success({ searchParams }) {
     }
 
     if (status === 'complete') {
-         createSubscription({ ...metadata, sessionId: session_id })
+         createSubscription({ ...metadata,customerEmail, sessionId: session_id })
 
         return (
             <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-orange-50 to-white px-4">

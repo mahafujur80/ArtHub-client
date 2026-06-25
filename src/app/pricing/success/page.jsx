@@ -26,6 +26,7 @@ export default async function Success({ searchParams }) {
   if (status === 'complete') {
     const paymentsObj = {
         ...metadata,
+        customerEmail,
         sessionId: session_id,
     }
     createPayment(paymentsObj)

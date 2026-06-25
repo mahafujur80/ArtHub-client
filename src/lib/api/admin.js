@@ -13,3 +13,8 @@ export const UpdateUserRole = async(userId, role) => {
 });
 return { data, error };
 }
+// get all transactions 
+export const getAllTransactions = async(role, page=1) => {
+    const res = await serverFetch(`/api/admin/transactions?role=${role}&page=${page}`);
+    return res;
+}
