@@ -232,7 +232,7 @@ return (
         {/* BUTTON */}
         <Button
           type="submit"
-          className="w-full text-white bg-gradient-to-r from-[#ff7a5c] via-[#e56fb0] to-[#8a6bff] font-semibold"
+          className="w-full text-white bg-orange-500 font-semibold"
         >
           <FaUserPlus />
           Create Account
@@ -265,7 +265,7 @@ return (
       {/* FOOTER */}
       <p className="text-center text-sm mt-4">
         Already have account?{" "}
-        <Link href="/login" className=" inline-block bg-gradient-to-r from-[#FF512F] via-[#DD2475] to-[#7B2FF7] bg-clip-text text-transparent">
+        <Link href="/login" className=" inline-block text-orange-500">
           Login
         </Link>
       </p>

@@ -25,7 +25,7 @@ export default function HeroSection() {
               around the world. Find paintings, illustrations and digital masterpieces.
             </p>
 
-            <Link href="/artworks">
+            <Link href="/artwork">
               <button className="mt-8 rounded-xl bg-orange-500 px-8 py-4 text-lg font-semibold text-white transition hover:opacity-90 hover:scale-105">
                 Browse Artworks
               </button>

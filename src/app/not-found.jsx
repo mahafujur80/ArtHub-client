@@ -1,15 +1,24 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function NotFound() {
   return (
     <div className="min-h-screen bg-white flex items-center justify-center px-6">
       <div className="text-center max-w-lg">
 
-        {/* 404 */}
-        <h1 className="text-[120px] md:text-[160px] font-extrabold text-orange-500 leading-none">
-          404
-        </h1>
+        {/* Decorative Image */}
+        <div className="relative w-full h-48 mb-6 rounded-2xl overflow-hidden">
+          <Image
+            src="https://plus.unsplash.com/premium_vector-1714618860091-a4324d7b355a?q=80&w=928&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="Decorative abstract art"
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
 
+        {/* 404 */}
+     
         {/* Title */}
         <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
           Page Not Found

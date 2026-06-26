@@ -37,7 +37,10 @@ const AllArtPage = async ({ searchParams }) => {
         <div className=' min-h-screen  p-4 '>
 
             <BrowseArtworkHeader />
-            <div className="container mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-4">
+            {
+              search &&  <p className="ml-12 text-gray-500 pb-7" >Handpicked {allArts.length} artworks matching your taste</p>
+            }
+            <div className="container mx-auto px-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-4">
 
                 {
                     allArts.map(art => <ArtCard art={art} key={art._id} />)

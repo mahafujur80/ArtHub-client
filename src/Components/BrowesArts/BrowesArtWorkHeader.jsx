@@ -39,11 +39,11 @@ export default function BrowseArtworkHeader() {
         const params = new URLSearchParams(searchParams.toString());
         params.set("page", 1);
 
-        if (search) {
-            params.set("search", search);
-        } else {
-            params.delete("search");
-        }
+        // if (search) {
+        //     params.set("search", search);
+        // } else {
+        //     params.delete("search");
+        // }
 
         if (min) {
             params.set("minPrice", min);
@@ -73,49 +73,29 @@ export default function BrowseArtworkHeader() {
     }
 
 
-    // useEffect(() => {
-    //     const params = new URLSearchParams(searchParams.toString());
+    useEffect(() => {
+    const timer = setTimeout(() => {
+        const params = new URLSearchParams(searchParams.toString());
 
-    //     if (search) {
-    //         params.set("search", search);
-    //     } else {
-    //         params.delete("search");
-    //     }
+        if (search) {
+            params.set("search", search);
+        } else {
+            params.delete("search");
+        }
 
-    //     if (min) {
-    //         params.set("minPrice", min);
-    //     } else {
-    //         params.delete("minPrice");
-    //     }
-
-    //     if (max) {
-    //         params.set("maxPrice", max);
-    //     } else {
-    //         params.delete("maxPrice");
-    //     }
-
-    //     if (category) {
-    //         params.set("category", category);
-    //     } else {    
-    //         params.delete("category");
-    //     }
-
-    //     if (sort) {
-    //         params.set("sort", sort);
-    //     } else {
-    //         params.delete("sort");
-    //     }
-
-    //     router.push(`/artwork?${params.toString()}`);
-    // }, [search, min, max, category, sort]);
+        router.push(`/artwork?${params.toString()}`);
+    }, 700);
+    return () => clearTimeout(timer);
+}, [search]);
 
     return (
-        <section className="bg-white border border-gray-100 rounded-2xl p-6 mb-10 shadow-sm">
+        <section className="container mx-auto px-6 bg-white border border-gray-100 rounded-2xl p-6 mb-10 shadow-sm">
             <div className="flex flex-col lg:flex-row lg:items-end gap-4">
 
                 {/* Search */}
                 <div className="flex flex-col gap-1 w-full lg:w-[320px]">
                     <Input
+                      aria-label="search"
                         onChange={(e) => setSearch(e.target.value)}
                         name="search"
                         placeholder="Search artworks"
@@ -127,6 +107,7 @@ export default function BrowseArtworkHeader() {
                     {/* Min Price */}
                     <div className="flex flex-col gap-1 w-full">
                         <Input
+                          aria-label="minPrice"
                             onChange={(e) => setMin(e.target.value)}
                             name="minPrice"
                             min={0}
@@ -138,6 +119,7 @@ export default function BrowseArtworkHeader() {
                     {/* Max Price */}
                     <div className="flex flex-col gap-1 w-full">
                         <Input
+                          aria-label="maxPrice"
                             onChange={(e) => setMax(e.target.value)}
                             name="maxPrice"
                             min={0}
@@ -149,7 +131,7 @@ export default function BrowseArtworkHeader() {
 
                 <div className="grid grid-cols-2 gap-3 w-full lg:w-[440px]">
                     {/* Category */}
-                    <Select onChange={(value) => setCategory(value)} className="w-full" name="category" placeholder="Category">
+                    <Select onChange={(value) => setCategory(value)} aria-label="Filter by category" className="w-full" name="category" placeholder="Category">
                         <Select.Trigger className="border border-gray-200 focus-within:border-orange-500">
                             <Select.Value />
                             <Select.Indicator />
@@ -168,7 +150,7 @@ export default function BrowseArtworkHeader() {
                     </Select>
 
                     {/* Sort */}
-                    <Select onChange={(value) => setSort(value)} className="w-full" name="sort" placeholder="Sort By">
+                    <Select onChange={(value) => setSort(value)} aria-label="Sort" className="w-full" name="sort" placeholder="Sort By">
                         <Select.Trigger className="border border-gray-200 focus-within:border-orange-500">
                             <Select.Value />
                             <Select.Indicator />

@@ -9,3 +9,8 @@ export const getArtworkById = async(id)=>{
     const res = await serverFetch(`/api/artwork/${id}`);
     return res;
 }
+// get featuer card data
+export const getFeaturedCard = async()=>{
+    const res = await serverFetch(`/api/artwork/features`);
+    return res;
+}

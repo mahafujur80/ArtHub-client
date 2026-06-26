@@ -5,4 +5,4 @@ export const getMyPurchases = async(userId, page=1)=>{
     return res;
 }
 
-//
+// purchase user 

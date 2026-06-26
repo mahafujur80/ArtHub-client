@@ -141,7 +141,7 @@ const LoginPage = () => {
 
             <Button
               type="submit"
-              className="w-full text-white bg-gradient-to-r from-[#ff7a5c] via-[#e56fb0] to-[#8a6bff]  font-semibold"
+              className="w-full text-white bg-orange-500 font-semibold"
             >
               <FaSignInAlt />
               Login
@@ -177,7 +177,7 @@ const LoginPage = () => {
         {/* FOOTER */}
         <p className="text-center text-sm text-default-500 mt-4">
           Don’t have an account?{" "}
-          <Link href="/signup" className="  inline-block bg-gradient-to-r from-[#FF512F] via-[#DD2475] to-[#7B2FF7] bg-clip-text text-transparent font-medium">
+          <Link href="/signup" className="  inline-block text-orange-500 font-medium">
             Register here
           </Link>
         </p>

@@ -55,7 +55,7 @@ export default function NavBar() {
                         user?.id ? <NavDropdown user={user} /> :
                             <div className=" items-center gap-4 flex">
                                 <Link href="/login" className="no-underline font-medium"> <Button variant="outline">Login</Button></Link>
-                                <Link href="/signup" className="no-underline" > <Button className=" text-white bg-gradient-to-r from-[#ff7a5c] via-[#e56fb0] to-[#8a6bff]">Sign Up</Button> </Link>
+                                <Link href="/signup" className="no-underline" > <Button className=" text-white bg-orange-500 hover:ob-orange-600">Sign Up</Button> </Link>
                             </div>
                     }
                 </div>
@@ -116,7 +116,7 @@ export default function NavBar() {
 
                              <div className="flex items-center gap-4 ">
                                     <Button variant="outline" className="w-full"><Link href="#" className="no-underline font-medium">Login</Link></Button>
-                                    <Button className="w-full text-[#F5F5F5]  bg-gradient-to-r from-[#ff7a5c] via-[#e56fb0] to-[#8a6bff]">Sign Up</Button>
+                                    <Button className="w-full bg-orange-500 hover:bg-orange-600"><Link href="#" className="no-underline font-medium text-white">Sign Up</Link></Button>
                              </div>
                         }
 
