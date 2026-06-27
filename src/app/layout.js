@@ -12,7 +12,7 @@ const poppins = Poppins({
 
 export const metadata = {
   title: "ArtHub",
-  description: "ArtHub is",
+  description: "ArtHub is ",
 };
 
 export default function RootLayout({ children }) {
