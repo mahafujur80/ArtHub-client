@@ -2,21 +2,51 @@
 
 import { FaComments } from "react-icons/fa";
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import toast from "react-hot-toast";
+import { createComment, getAllComments, getArtworkBuyProved } from "@/lib/api/comment";
 
-const ArtWorkComments = ({art, user}) => {
 
-    const handlePostComment = (e) => {
+const ArtWorkComments = ({ art, user }) => {
+
+    const [comments, setComments] = useState([]);
+    const [buyProved, setBuyProved] = useState({});
+
+    const fetchComment = async () => {
+        const res = await getAllComments(art?._id)
+        setComments(res)
+    };
+    const fetchArtworkBuyProved = async () => {
+        const res = await getArtworkBuyProved(art?._id, user?.id)
+        setBuyProved(res)
+    };
+
+    useEffect(() => {
+        fetchComment();
+        fetchArtworkBuyProved();
+    }, [art?._id])
+
+    console.log(buyProved, "buyProved")
+
+    const handlePostComment = async (e) => {
         e.preventDefault();
         const comment = e.target.comment.value;
-        
+
         const commentObj = {
             artworkId: art?._id,
             userId: user?.id,
             userName: user?.name,
             comment,
         }
-        console.log(commentObj);
+        const res = await createComment(commentObj, art?._id)
+        if (res.success) {
+            toast.success(res.message)
+            e.target.reset()
+            await fetchComment()
+        } else {
+            toast.error(res.message)
+        }
+        
     };
 
     return (
@@ -27,16 +57,17 @@ const ArtWorkComments = ({art, user}) => {
                 <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
                     <FaComments className="w-6 h-6 text-orange-500" />
                     Review & Comments
-                    <span className="text-sm font-normal text-gray-500">({52 || 0})</span>
+                    <span className="text-sm font-normal text-gray-500">({comments?.length || 0})</span>
                 </h2>
 
                 {/* Comment Input */}
                 <div className="mb-8">
+                    {
+                    buyProved?.buyerId === user?.id ?
                     <div className="flex gap-3">
                         {/* User Avatar (ছোট করে) */}
                         <div className="w-10 h-10 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center text-white font-semibold flex-shrink-0">
-                            {/* {user?.name?.charAt(0) || "U"} */}
-                           user
+                            {user?.name?.charAt(0) || "U"}
                         </div>
 
                         {/* Input Field */}
@@ -52,31 +83,40 @@ const ArtWorkComments = ({art, user}) => {
                             </button>
                         </form>
                     </div>
+                    :
+                    <p className=" border border-orange-500 border-dotted rounded-lg p-3 text-orange-500 font-medium text-center mt-3">
+                      Purchase this artwork to unlock reviews and comments from verified buyers.
+                    </p>
+                    }
                 </div>
 
                 {/* Comments List */}
                 <div className="space-y-4">
 
                     {/* Single Comment */}
-                    <div className="flex gap-3 group">
-                        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-orange-400 to-pink-500 flex items-center justify-center text-white font-semibold flex-shrink-0">
-                            JD
-                        </div>
-                        <div className="flex-1">
-                            <div className="bg-gray-50 rounded-2xl p-4">
-                                <div className="flex items-center gap-2 mb-1">
-                                    <h4 className="font-semibold text-gray-900 text-sm">John Doe</h4>
-                                    <span className="text-xs text-gray-400">•</span>
-                                    <span className="text-xs text-gray-400">2 hours ago</span>
+                    {
+                        comments.map((comment) => {
+                            return (
+                                <div key={comment?._id} className="flex gap-3 group">
+                                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-orange-400 to-pink-500 flex items-center justify-center text-white font-semibold flex-shrink-0">
+                                        {comment?.userName?.charAt(0) || "U"}
+                                    </div>
+                                    <div className="flex-1">
+                                        <div className="bg-gray-50 rounded-2xl p-4">
+                                            <div className="flex items-center gap-2 mb-1">
+                                                <h4 className="font-semibold text-gray-900 text-sm">{comment?.buyerName}</h4>
+                                                <span className="text-xs text-gray-400"> {comment?.userName} •</span>
+                                                <span className="text-xs text-gray-400">{new Date(comment?.createAt).toLocaleDateString()}</span>
+                                            </div>
+                                            <p className="text-gray-700 text-sm leading-relaxed">
+                                                {comment?.comment}
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <p className="text-gray-700 text-sm leading-relaxed">
-                                    Beautiful artwork! Love the details and color combination. 😍
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-
+                            )
+                        })
+                    }
                 </div>
 
             </div>
