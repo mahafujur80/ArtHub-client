@@ -40,7 +40,7 @@ export default function NotFound() {
           </Link>
 
           <Link
-            href="/arts"
+            href="/artwork"
             className="px-6 py-3 rounded-xl border border-orange-500 text-orange-500 font-semibold hover:bg-orange-50 transition"
           >
             Browse Artworks

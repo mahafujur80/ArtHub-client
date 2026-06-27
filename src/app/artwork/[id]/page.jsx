@@ -194,6 +194,10 @@ const ArtworkDetailPage = async ({ params }) => {
           </div>
         </div>
       </div>
+
+
+
+      
     </div>
   );
 };

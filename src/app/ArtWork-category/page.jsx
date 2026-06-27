@@ -4,57 +4,56 @@ import React from 'react';
 import CategoryCard from '@/Components/HomePage/CategoryCard';
 import { motion } from 'framer-motion';
 
-const baseUrl = process.env.BETTER_AUTH_URL;
 const categories = [
     {
         name: "Painting",
         image: "https://images.unsplash.com/photo-1578926375605-eaf7559b1458?q=80&w=763&auto=format&fit=crop",
-        link: `${baseUrl}/artwork?category=Painting`
+        link: `/artwork?category=Painting`
     },
     {
         name: "Digital Art",
         image: "https://plus.unsplash.com/premium_photo-1710865692399-6fe10f968711?q=80&w=870&auto=format&fit=crop",
-        link: `${baseUrl}/artwork?category=Digital Art`,
+        link: `/artwork?category=Digital Art`,
     },
     {
         name: "Illustration",
         image: "https://images.unsplash.com/photo-1579762593175-20226054cad0?w=500&auto=format&fit=crop",
-        link: `${baseUrl}/artwork?category=Illustration`,
+        link: `/artwork?category=Illustration`,
     },
     {
         name: "Photography",
         image: "https://plus.unsplash.com/premium_photo-1669800144507-0a7b011990eb?q=80&w=1160&auto=format&fit=crop",
-        link:   `${baseUrl}/artwork?category=Photography`,
+        link:   `/artwork?category=Photography`,
     },
     {
         name: "Abstract",
         image: "https://images.unsplash.com/photo-1563089145-599997674d42?q=80&w=870&auto=format&fit=crop",
-        link: `${baseUrl}/artwork?category=Abstract`,
+        link: `/artwork?category=Abstract`,
     },
     {
         name: "Portrait",
         image: "https://images.unsplash.com/photo-1741336649556-8b78a2a33b9e?q=80&w=444&auto=format&fit=crop",
-        link: `${baseUrl}/artwork?category=Portrait`,
+        link: `/artwork?category=Portrait`,
     },
     {
         name: "Landscape",
         image: "https://aggp.ca/wp-content/uploads/2017/11/4.jpg",
-        link:  `${baseUrl}/artwork?category=Landscape`,
+        link:  `/artwork?category=Landscape`,
     },
     {
         name: "Concept Art",
         image: "https://images.unsplash.com/photo-1719396923095-d9aa2ef3b974?q=80&w=774&auto=format&fit=crop",
-        link: `${baseUrl}/artwork?category=Concept Art`,
+        link: `/artwork?category=Concept Art`,
     },
     {
         name: "Sketch",
         image: "https://images.unsplash.com/photo-1643569941917-95185f728355?q=80&w=1050&auto=format&fit=crop",    
-        link: `${baseUrl}/artwork?category=Sketch`,
+        link: `/artwork?category=Sketch`,
     },
     {
         name: "Calligraphy",
         image: "https://plus.unsplash.com/premium_photo-1675623429264-e6f60de79a4a?q=80&w=870&auto=format&fit=crop",
-        link: `${baseUrl}/artwork?category=Calligraphy`,
+        link: `/artwork?category=Calligraphy`,
     },
 ];
 
