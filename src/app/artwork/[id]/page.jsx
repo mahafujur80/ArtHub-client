@@ -12,6 +12,10 @@ import {
   FaClock
 } from "react-icons/fa";
 
+import { FaComments, FaUser, FaTrash } from 'react-icons/fa';
+import NoPurchaseComSec from "../NoPurchaseComSec";
+import ArtWorkComments from "../ArtWorkComents";
+
 const ArtworkDetailPage = async ({ params }) => {
   const { id } = await params;
   const art = await getArtworkById(id)
@@ -197,9 +201,10 @@ const ArtworkDetailPage = async ({ params }) => {
 
 
 
-      
+      {
+        !user?.id? <NoPurchaseComSec /> : <ArtWorkComments art={art} user={user} />
+      }
     </div>
-  );
-};
+)};
 
 export default ArtworkDetailPage;
