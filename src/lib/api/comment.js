@@ -22,3 +22,8 @@ export const deleteComment = async(commentId)=>{
     const res = await serverDelete(`/api/user/comment/`, commentId)
     return res;
 }
+// update user own comment
+export const updateComment = async(data, commentId)=>{
+    const res = await serverMutation(`/api/user/comment/${commentId}`, data, "PATCH")
+    return res;
+}

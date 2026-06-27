@@ -6,6 +6,7 @@ import React, { useEffect, useState } from 'react';
 import toast from "react-hot-toast";
 import { createComment, getAllComments, getArtworkBuyProved } from "@/lib/api/comment";
 import CommentDelete from "./CommentDelete";
+import CommentUpdate from "./CommentUpdate";
 
 
 const ArtWorkComments = ({ art, user }) => {
@@ -127,7 +128,11 @@ const ArtWorkComments = ({ art, user }) => {
 
                                             <div>
                                               {
-                                                comment?.userId === user?.id && <CommentDelete id={comment?._id} fetchComment={fetchComment}/>
+                                                comment?.userId === user?.id && 
+                                                <div className="flex items-center">
+                                                    <CommentUpdate id={comment?._id} comment={comment?.comment} fetchComment={fetchComment}/>
+                                                    <CommentDelete id={comment?._id} fetchComment={fetchComment}/>
+                                                </div>
                                               }
                                             </div>
                                         </div>

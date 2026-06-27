@@ -19,7 +19,7 @@ const CommentDelete = ({id, fetchComment}) => {
 
     return (
         <AlertDialog>
-            <Button variant="ghost" className="text-red-400" >
+            <Button variant="ghost" className="text-red-400 !px-2" >
                 <IoTrashOutline />
             </Button>
             <AlertDialog.Backdrop>
