@@ -1,3 +1,5 @@
+import ArtWorkComments from "@/Components/Comments/ArtWorkComents";
+import NoPurchaseComSec from "@/Components/Comments/NoPurchaseComSec";
 import { getArtworkById } from "@/lib/api/artwork";
 import { getPlans } from "@/lib/api/plans";
 import { getMyPurchases } from "@/lib/api/purchase";
@@ -12,9 +14,6 @@ import {
   FaClock
 } from "react-icons/fa";
 
-import { FaComments, FaUser, FaTrash } from 'react-icons/fa';
-import NoPurchaseComSec from "../NoPurchaseComSec";
-import ArtWorkComments from "../ArtWorkComents";
 
 const ArtworkDetailPage = async ({ params }) => {
   const { id } = await params;

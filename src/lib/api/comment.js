@@ -1,5 +1,5 @@
 import { serverFetch } from "../server/action";
-import { serverMutation } from "../server/serverMutation";
+import { serverDelete, serverMutation } from "../server/serverMutation";
 
 export const getAllComments = async(artworkId)=>{
     const res = await serverFetch(`/api/user/comment?artworkId=${artworkId}`)
@@ -15,5 +15,10 @@ export const createComment = async(data, artWorkId)=>{
 // get buyer artwork buy proved
 export const getArtworkBuyProved = async(artworkId, userId)=>{
     const res = await serverFetch(`/api/user/purchaseProved?artworkId=${artworkId}&userId=${userId}`)
+    return res;
+}
+// delete user own comment
+export const deleteComment = async(commentId)=>{
+    const res = await serverDelete(`/api/user/comment/`, commentId)
     return res;
 }
