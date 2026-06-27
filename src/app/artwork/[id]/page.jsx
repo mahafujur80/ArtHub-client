@@ -75,9 +75,9 @@ const ArtworkDetailPage = async ({ params }) => {
           </div>
 
           {/* Right Column - Details */}
-          <div className="space-y-6">
+          <div className="space-y-4">
             {/* Title */}
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+            <h1 className="text-2xl sm:text-4xl lg:text-4xl font-bold text-gray-900 leading-tight">
               {art?.title}
             </h1>
 
@@ -97,37 +97,37 @@ const ArtworkDetailPage = async ({ params }) => {
               <div>
                 <p className="text-sm text-gray-500">Created by</p>
                 <p className="text-lg font-semibold text-gray-800 group-hover:text-orange-500 transition-colors">
-                  { art?.artist || "Unknown Artist"}
+                  {art?.artist || "Unknown Artist"}
                 </p>
               </div>
             </Link>
 
             {/* Meta Info Grid */}
-            <div className="grid grid-cols-2 gap-4 bg-white/80 backdrop-blur-sm rounded-2xl p-5 border border-orange-100 shadow-sm">
+            <div className="rounded-2xl border border-orange-100 bg-white p-3 shadow-sm">
               <div className="flex items-center gap-3">
-                <div className="p-2.5 bg-orange-100 rounded-xl">
-                  <FaCalendarAlt className="w-5 h-5 text-orange-500" />
+                <div className="rounded-xl bg-orange-100 p-1">
+                  <FaCalendarAlt className="h-3 w-3 text-orange-500" />
                 </div>
+
                 <div>
                   <p className="text-xs text-gray-500">Uploaded</p>
-                  <p className="text-sm font-medium text-gray-700">{new Date( art?.createAt).toDateString()}</p>
+                  <p className="text-sm font-medium text-gray-700">
+                    {new Date(art?.createAt).toDateString()}
+                  </p>
                 </div>
-              </div>
-              <div className="flex items-center gap-3">
-
               </div>
             </div>
 
             {/* Description */}
             <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-5 border border-orange-100 shadow-sm">
               <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">Description</h3>
-              <p className="text-gray-700 leading-relaxed">
+              <p className="text-gray-700 leading-relaxed h-35 overflow-scroll">
                 {art?.description || "No description available for this artwork."}
               </p>
             </div>
 
             {/* Purchase Section */}
-            <div className="bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl p-6 shadow-xl shadow-orange-200/50">
+            <div className="bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl p-4 shadow-xl shadow-orange-200/50">
               <div className="flex items-center justify-between mb-4">
                 <div>
                   <p className="text-orange-100 text-sm font-medium">Total Price</p>
@@ -168,13 +168,13 @@ const ArtworkDetailPage = async ({ params }) => {
                       plan?.maxPurchase !== -1 &&
                         purchases?.length >= plan?.maxPurchase ?
                         <Link href="/pricing">
-                          <button className="w-full  p-4">
+                          <button className="w-full  p-3">
                             Upgrade Now For More Purchase
                           </button>
                         </Link>
-                        
+
                         :
-                        <button type="submit" className="w-full flex items-center justify-center gap-5 p-4">
+                        <button type="submit" className="w-full flex items-center justify-center gap-5 p-3">
                           Purchase Now
                           <FaShoppingCart className="w-5 h-5 transition-transform group-hover:-translate-x-1" />
                         </button>

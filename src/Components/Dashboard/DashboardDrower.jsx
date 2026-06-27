@@ -6,6 +6,8 @@ import {
   MdDashboard,
   MdAddBox,
   MdEdit,
+  MdPeople,
+  MdPayments,
   MdHistory,
   MdPerson,
   MdSettings,
