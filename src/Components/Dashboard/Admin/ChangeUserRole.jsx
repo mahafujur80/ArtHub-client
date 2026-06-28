@@ -14,7 +14,7 @@ export function UpdateUserRoleModal({ userId }) {
 
 
     const makeUserBuyer = async () => {
-        const res = await updateUserRole(userId, "buyer");
+        const res = await updateUserRole(userId, {role: "buyer"});
         if (res.success) {
             toast.success(res.message)
             router.refresh()
@@ -23,7 +23,7 @@ export function UpdateUserRoleModal({ userId }) {
         }
     };
     const makeUserArtist = async () => {
-        const res = await updateUserRole(userId, "buyer");
+        const res = await updateUserRole(userId, {role: "artist"});
         if (res.success) {
             toast.success(res.message)
             router.refresh()
@@ -32,7 +32,7 @@ export function UpdateUserRoleModal({ userId }) {
         }
     };
     const makeUserAdmin = async () => {
-        const res = await updateUserRole(userId, "buyer");
+        const res = await updateUserRole(userId, {role: "admin"});
         if (res.success) {
             toast.success(res.message)
             router.refresh()
@@ -41,7 +41,7 @@ export function UpdateUserRoleModal({ userId }) {
         }
     };
     
-
+    
     useEffect(() => {
         if (currentRole === "buyer") {
             makeUserBuyer(currentRole)

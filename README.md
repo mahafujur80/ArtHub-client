@@ -6,7 +6,7 @@ ArtHub is a modern online art marketplace built with the MERN stack, allowing ar
 
 ## 🌐 Live Website
 
-**Live Site:** https://your-vercel-app.vercel.app
+**Live Site:** https://art-hub-client-one.vercel.app
 
 ---
 

@@ -8,10 +8,9 @@ export const  getAllUsers = async(role, page=1) => {
    return res;
 }
 
-
 // admin update user role 
-export const updateUserRole = async(userId, role)=>{
-    const res = await serverMutation(`/api/admin/users?userId=${userId}`, role, 'PATCH');
+export const updateUserRole = async(userId, data)=>{
+    const res = await serverMutation(`/api/admin/users/${userId}`, data, 'PATCH');
     return res;
 }
 
