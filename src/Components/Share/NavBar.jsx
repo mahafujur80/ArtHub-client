@@ -74,7 +74,7 @@ export default function NavBar() {
             {/* mobile menu */}
             {
                 isMenuOpen && (
-                    <div className="border-t border-separator md:hidden">
+                    <div className="border-t p border-separator md:hidden">
                         <div className="flex flex-col gap-2 p-4">
                             <Link href="/" className={` ${pathName === '/' ? "text-white  bg-orange-500" : ''}   w-full no-underline block p-2 font-medium`}>Home</Link>
                             <Link href="/artwork" className={` ${pathName === '/artwork' ? "text-white  bg-orange-500" : ''}  w-full no-underline block p-2 font-medium`}>Browse Artworks</Link>
@@ -114,9 +114,9 @@ export default function NavBar() {
 
                                 :
 
-                             <div className="flex items-center gap-4 ">
-                                    <Button variant="outline" className="w-full"><Link href="#" className="no-underline font-medium">Login</Link></Button>
-                                    <Button className="w-full bg-orange-500 hover:bg-orange-600"><Link href="#" className="no-underline font-medium text-white">Sign Up</Link></Button>
+                             <div className="flex items-center gap-4 p-4 ">
+                                    <Button variant="outline" className="w-full"><Link href="/login" className="no-underline font-medium">Login</Link></Button>
+                                    <Button className="w-full bg-orange-500 hover:bg-orange-600"><Link href="/signup" className="no-underline font-medium text-white">Sign Up</Link></Button>
                              </div>
                         }
 

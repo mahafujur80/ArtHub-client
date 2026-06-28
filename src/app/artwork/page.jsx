@@ -34,7 +34,7 @@ const AllArtPage = async ({ searchParams }) => {
 
 
     return (
-        <div className=' min-h-screen  p-4 '>
+        <div className='min-h-screen  p-4 '>
 
             <BrowseArtworkHeader />
             {
@@ -45,7 +45,7 @@ const AllArtPage = async ({ searchParams }) => {
                 allArts.length === 0 && <EmptyMessage />
             }
 
-            <div className="container mx-auto px-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-4">
+            <div className="container mx-auto  grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-4">
 
                 {
                     allArts.map(art => <ArtCard art={art} key={art._id} />)
