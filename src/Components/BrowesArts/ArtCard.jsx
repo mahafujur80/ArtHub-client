@@ -4,14 +4,14 @@ import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 
 export default function ArtCard({ art }) {
   return (
-    <Link href={`/artwork/${art._id}`}>
+    <Link href={`/artwork/${art?._id}`}>
       <div className="cursor-pointer group w-full bg-white rounded-xl sm:rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 border border-orange-100 hover:border-orange-300 h-full flex flex-col">
 
         {/* Image Section - Responsive height */}
         <div className="relative h-40 xs:h-44 sm:h-48 md:h-52 lg:h-56 overflow-hidden flex-shrink-0">
           <Image
-            src={art.image}
-            alt={art.title}
+            src={art?.image}
+            alt={art?.title}
             width={500}
             height={500}
             className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
@@ -23,7 +23,7 @@ export default function ArtCard({ art }) {
 
           {/* price badge - orange themed - responsive */}
           <div className="absolute bottom-2 right-2 sm:bottom-3 sm:right-3 bg-orange-500 text-white px-2 py-0.5 sm:px-3 sm:py-1 rounded-full text-[10px] xs:text-xs sm:text-sm font-semibold shadow-lg">
-            ${art.price}
+            ${art?.price}
           </div>
         </div>
 
@@ -32,13 +32,13 @@ export default function ArtCard({ art }) {
 
           {/* Title - Responsive text */}
           <h2 className="text-xs xs:text-sm sm:text-base md:text-lg font-bold text-gray-900 line-clamp-1 group-hover:text-orange-600 transition-colors">
-            {art.title}
+            {art?.title}
           </h2>
 
           {/* Artist - Responsive text */}
           <p className="text-[10px] xs:text-xs sm:text-sm text-gray-500 flex items-center gap-1">
             <span className="font-semibold sm:text-[10px]">Artist:</span>
-            <span className="truncate">{art.artist || "Unknown Artist"}</span>
+            <span className="truncate">{art?.artist || "Unknown Artist"}</span>
           </p>
 
           {/* View Details Button - Responsive */}

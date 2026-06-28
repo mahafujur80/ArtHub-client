@@ -2,13 +2,14 @@ import { FaPaintBrush, FaEnvelope } from 'react-icons/fa';
 import { MdVerified } from 'react-icons/md';
 import Image from 'next/image';
 import { Separator } from '@heroui/react';
-import { getArtistProfileData } from '@/lib/api/artist';
+import { getArtistProfileData, getArtistProfileDataById } from '@/lib/api/artist';
+import ArtCard from '@/Components/BrowesArts/ArtCard';
 
 
 export default async function ArtistProfile({ params }) {
     const { artist } = await params;
     const artistProfile = await getArtistProfileData(artist)
-    console.log(artistProfile)
+    const artworkData = await getArtistProfileDataById(artistProfile?._id)
 
     return (
         <div className="container mx-auto px-6 min-h-screen border-b border-zinc-200">
@@ -46,7 +47,7 @@ export default async function ArtistProfile({ params }) {
 
                         <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1.5 sm:px-4 sm:py-2 bg-orange-500 text-white rounded-lg sm:rounded-xl text-[11px] sm:text-sm font-medium">
                             <FaPaintBrush className="text-[10px] sm:text-sm" />
-                            <span>{52} Total Artworks</span>
+                            <span>{artworkData?.length} Total Artworks</span>
                         </div>
 
                     </div>
@@ -56,8 +57,10 @@ export default async function ArtistProfile({ params }) {
 
             {/* artist artwork section  */}
             <Separator variant="secondary" />
-            <div>
-
+            <div className="py-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-4">
+                {
+                    artworkData.map(art => <ArtCard art={art} key={art._id} />)
+                }
             </div>
         </div>
     );
