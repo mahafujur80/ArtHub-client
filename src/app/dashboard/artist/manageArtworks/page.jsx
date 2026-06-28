@@ -1,5 +1,6 @@
 import { ArtsEditModal } from '@/Components/Dashboard/ArtsEditModal';
 import { DeleteDialog } from '@/Components/Dashboard/DeleteDialog';
+import EmptyMessage from '@/Components/EmptyMessage';
 import { getArtistArtworks } from '@/lib/api/artist';
 import { getServerSession } from '@/lib/server/getServerSession';
 import { Button, Pagination, Table } from '@heroui/react';
@@ -17,6 +18,10 @@ const ManageArt = async ({searchParams}) => {
     const pages = [];
     for(let i = 1; i <= totalPages; i++) {
         pages.push(i);
+    }
+
+    if(myArtWorks.length === 0) {
+        return <EmptyMessage />
     }
 
     return (

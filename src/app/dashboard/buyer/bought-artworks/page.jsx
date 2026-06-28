@@ -4,6 +4,7 @@ import React from 'react';
 import ArtworkCard from './ArtWorkCard';
 import { Pagination } from '@heroui/react';
 import Link from 'next/link';
+import EmptyMessage from '@/Components/EmptyMessage';
 
 const BoughtArtworks = async ({searchParams}) => {
     const {page} = await searchParams;
@@ -16,6 +17,10 @@ const BoughtArtworks = async ({searchParams}) => {
     const pages = []
     for(let i = 1; i <= totalPages; i++) {
         pages.push(i)
+    }
+
+    if(myArtworks.length === 0) {
+        <EmptyMessage />
     }
 
     return (

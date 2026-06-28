@@ -1,18 +1,18 @@
-import { authClient } from "../auth-client";
-import { serverFetch } from "../server/action";
-import { serverDelete } from "../server/serverMutation";
 
+import { serverFetch } from "../server/action";
+import { serverDelete, serverMutation } from "../server/serverMutation";
+
+//get all users
 export const  getAllUsers = async(role, page=1) => {
    const res = await serverFetch(`/api/admin/users?role=${role}&page=${page}`);
    return res;
 }
 
-export const UpdateUserRole = async(userId, role) => {
-   const { data, error } = await authClient.admin.setRole({
-    userId: userId,
-    role: role, // required
-});
-return { data, error };
+
+// admin update user role 
+export const updateUserRole = async(userId, role)=>{
+    const res = await serverMutation(`/api/admin/users?userId=${userId}`, role, 'PATCH');
+    return res;
 }
 
 // get all transactions 

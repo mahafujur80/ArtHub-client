@@ -66,7 +66,7 @@ const RegisterPage = () => {
       plan: "free",
       role: userData.role,
     });
-    console.log(data, error);
+    
     if (data) {
       toast.success("Welcome to ArtHub");
       router.push("/");

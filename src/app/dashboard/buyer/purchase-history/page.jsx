@@ -1,3 +1,4 @@
+import EmptyMessage from '@/Components/EmptyMessage';
 import { getPurchaseHistory } from '@/lib/api/buyer';
 import { getServerSession } from '@/lib/server/getServerSession';
 import { Pagination, Table } from '@heroui/react';
@@ -14,6 +15,10 @@ const PurchaseHistory = async ({ searchParams }) => {
     const pages = [];
     for (let i = 1; i <= totalPages; i++) {
         pages.push(i)
+    }
+   
+    if(availableHistory.length === 0) {
+        <EmptyMessage />
     }
 
     return (

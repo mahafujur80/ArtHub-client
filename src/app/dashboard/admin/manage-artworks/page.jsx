@@ -1,4 +1,5 @@
 import { AdminDeleteArtwork } from '@/Components/Dashboard/Admin/DeleterArtWorkAdmin';
+import EmptyMessage from '@/Components/EmptyMessage';
 import { getAllArtworksAdmin } from '@/lib/api/admin';
 import { getServerSession } from '@/lib/server/getServerSession';
 import { Pagination, Table } from '@heroui/react';
@@ -15,6 +16,10 @@ const ManageArt = async ({searchParams}) => {
     const pages = [];
     for(let i = 1; i <= totalPages; i++) {
         pages.push(i);
+    };
+
+    if(allArtworks.length === 0) {
+        return <EmptyMessage />
     }
 
     return (

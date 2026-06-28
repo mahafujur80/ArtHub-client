@@ -52,7 +52,7 @@ export default async function ArtistProfile({ params }) {
 
                     </div>
                 </div>
-
+        
             </div>
 
             {/* artist artwork section  */}

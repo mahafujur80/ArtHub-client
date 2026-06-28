@@ -2,6 +2,7 @@
 
 import { authClient } from "@/lib/auth-client";
 import { Avatar, Dropdown, Label } from "@heroui/react";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { LuLogOut } from "react-icons/lu";
@@ -22,7 +23,7 @@ export function NavDropdown({ user }) {
         <Avatar>
           <Avatar.Image
             alt="Junior Garcia"
-            src={user?.image}
+            src={user?.image || "https://static.vecteezy.com/system/resources/thumbnails/048/216/761/small/modern-male-avatar-with-black-hair-and-hoodie-illustration-free-png.png"}
           />
           <Avatar.Fallback delayMs={600}>{user?.name[0].toUpperCase()}</Avatar.Fallback>
         </Avatar>

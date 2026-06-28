@@ -41,7 +41,7 @@ const LoginPage = () => {
       password: userData.password,
       rememberMe: true,
     })
- console.log(error, data)
+
     if (data) {
       toast.success("Welcome back");
       router.push(redirect || "/");

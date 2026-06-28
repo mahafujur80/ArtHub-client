@@ -6,9 +6,9 @@ import { FaShoppingBag, FaCrown, FaMoneyBillWave, FaArrowRight } from "react-ico
 
 export default async function BuyerOverview() {
 
-     const user = await getServerSession()
-      const planLimits = await getPlans(user?.plan)
-      const purchases = await getMyTotalPurchase(user?.id) 
+  const user = await getServerSession()
+  const planLimits = await getPlans(user?.plan)
+  const purchases = await getMyTotalPurchase(user?.id)
 
 
   const purchaseCount = purchases.length; //  // data from pagination
@@ -79,11 +79,11 @@ export default async function BuyerOverview() {
           </div>
         </div>
 
-       
+
       </div>
 
       {/* Subscription Overview */}
-     
+
 
       {/* Quick Actions */}
       <div>

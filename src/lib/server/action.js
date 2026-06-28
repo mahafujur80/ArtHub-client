@@ -21,7 +21,7 @@ const getJwtToken = async()=>{
 // server fetch
 export const serverFetch = async (api) => {
     const token = await getJwtToken();
-    console.log(token)
+    
     const response = await fetch(`${baseUrl}${api}`,{
         headers: {authorization: `Bearer ${token}`}
     });

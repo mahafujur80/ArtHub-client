@@ -1,3 +1,4 @@
+import EmptyMessage from '@/Components/EmptyMessage';
 import { getAllTransactions } from '@/lib/api/admin';
 import { getServerSession } from '@/lib/server/getServerSession';
 import { Pagination, Table } from '@heroui/react';
@@ -15,6 +16,10 @@ const AllTransactionPage = async ({ searchParams }) => {
     for (let i = 1; i <= totalPages; i++) {
         pages.push(i);
     };
+
+    if(allTransactions.length === 0) {
+        return <EmptyMessage />
+    }
 
     return (
         <div className='p-5'>

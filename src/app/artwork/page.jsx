@@ -1,5 +1,6 @@
 import ArtCard from '@/Components/BrowesArts/ArtCard';
 import BrowseArtworkHeader from '@/Components/BrowesArts/BrowesArtWorkHeader';
+import EmptyMessage from '@/Components/EmptyMessage';
 import { getAllArtworks } from '@/lib/api/artwork';
 import { Pagination } from '@heroui/react';
 import Link from 'next/link';
@@ -32,14 +33,18 @@ const AllArtPage = async ({ searchParams }) => {
     };
 
 
-
     return (
         <div className=' min-h-screen  p-4 '>
 
             <BrowseArtworkHeader />
             {
-              search &&  <p className="ml-12 text-gray-500 pb-7" >Handpicked {allArts.length} artworks matching your taste</p>
+                search && <p className="ml-12 text-gray-500 pb-7" >Handpicked {allArts.length} artworks matching your taste</p>
             }
+
+            {
+                allArts.length === 0 && <EmptyMessage />
+            }
+
             <div className="container mx-auto px-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-4">
 
                 {
@@ -55,7 +60,7 @@ const AllArtPage = async ({ searchParams }) => {
                                 isDisabled={currentPage === 1}
                                 className="hover:!bg-orange-500 group"
                             >
-                                <Link className='flex gap-2 group-hover:!text-white'  href={`/artwork?${createQueryString(currentPage - 1)}`}>
+                                <Link className='flex gap-2 group-hover:!text-white' href={`/artwork?${createQueryString(currentPage - 1)}`}>
                                     <Pagination.PreviousIcon />
                                     Prev
                                 </Link>
@@ -63,7 +68,7 @@ const AllArtPage = async ({ searchParams }) => {
                         </Pagination.Item>
                         {pages.map((p) => (
                             <Pagination.Item key={p}>
-                                <Link  href={`/artwork?${createQueryString(p)}`}>
+                                <Link href={`/artwork?${createQueryString(p)}`}>
                                     <Pagination.Link isActive={p === currentPage} className={p === currentPage ? "!bg-orange-500 !text-white" : "!bg-white !text-orange-500"}>
                                         {p}
                                     </Pagination.Link>
@@ -75,7 +80,7 @@ const AllArtPage = async ({ searchParams }) => {
                                 isDisabled={currentPage === totalPages}
                                 className="hover:!bg-orange-500 group"
                             >
-                                <Link className='flex gap-2  group-hover:!text-white'  href={`/artwork?${createQueryString(currentPage + 1)}`}>
+                                <Link className='flex gap-2  group-hover:!text-white' href={`/artwork?${createQueryString(currentPage + 1)}`}>
                                     Next
                                     <Pagination.NextIcon />
                                 </Link>

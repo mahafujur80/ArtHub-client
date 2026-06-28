@@ -22,6 +22,8 @@ const categories = [
 ];
 
 export function ArtsEditModal({ art }) {
+
+    const [category, setCategory] = useState(art?.category);
     const [image, setImage] = useState(null);
     const router = useRouter()
 
@@ -40,10 +42,11 @@ export function ArtsEditModal({ art }) {
             title: formData.title,
             description: formData.description,
             price: Number(formData.price),
-            category: formData.category,
+            category: category,
             image: imageUrl,
         };
         const res = await updateArtwork(art?._id, artworkData)
+       
         if(res.modifiedCount === 1){
             toast.success("Artwork updated successfully")
             router.refresh()
@@ -123,14 +126,14 @@ export function ArtsEditModal({ art }) {
                                                 Category
                                             </label>
 
-                                            <select
-                                                defaultValue={art?.category}
+                                            <select 
+                                                onChange={(e) => setCategory(e.target.value)}
+                                                value={category}
                                                 name="category"
                                                 required
                                                 className="w-full rounded-xl border px-4 py-3 outline-none transition focus:border-orange-500"
                                             >
-                                                <option value="">Select Category</option>
-
+                                                <option >Select Category</option>
                                                 {categories.map((category) => (
                                                     <option key={category} value={category}>
                                                         {category}
@@ -184,7 +187,7 @@ export function ArtsEditModal({ art }) {
                                         <Button slot="close" variant="outline">
                                             Cancel
                                         </Button>
-                                        <Button type="submit" className='bg-orange-500 text-white' slot="close">Save</Button>
+                                        <Button type="submit" slot="close" className='bg-orange-500 text-white' >Save</Button>
                                     </Modal.Footer>
                                 </form>
                             </Surface>

@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { UpdateUserRole } from "@/lib/api/admin";
-import { Button, Label, ListBox, Modal, Surface, TextField, Select } from "@heroui/react";
+import { updateUserRole } from "@/lib/api/admin";
+import { Button, Label, ListBox, Modal, Surface, Select } from "@heroui/react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
@@ -14,32 +14,33 @@ export function UpdateUserRoleModal({ userId }) {
 
 
     const makeUserBuyer = async () => {
-        const res = await UpdateUserRole(userId, "buyer");
-        if (res.data.user) {
-            toast.success("User role updated successfully")
-            router.refresh('/dashboard/admin/manage-users')
-        } else if (res.error) {
-            toast.error(res.error.message)
+        const res = await updateUserRole(userId, "buyer");
+        if (res.success) {
+            toast.success(res.message)
+            router.refresh()
+        } else {
+            toast.error(res.message)
         }
     };
     const makeUserArtist = async () => {
-        const res = await UpdateUserRole(userId, "artist");
-        if (res.data.user) {
-            toast.success("User role updated successfully")
-            router.refresh('/dashboard/admin/manage-users')
-        } else if (res.error) {
-            toast.error(res.error.message)
+        const res = await updateUserRole(userId, "buyer");
+        if (res.success) {
+            toast.success(res.message)
+            router.refresh()
+        } else {
+            toast.error(res.message)
         }
     };
     const makeUserAdmin = async () => {
-        const res = await UpdateUserRole(userId, "admin");
-        if (res.data.user) {
-            toast.success("User role updated successfully")
-            router.refresh('/dashboard/admin/manage-users')
-        } else if (res.error) {
-            toast.error(res.error.message)
+        const res = await updateUserRole(userId, "buyer");
+        if (res.success) {
+            toast.success(res.message)
+            router.refresh()
+        } else {
+            toast.error(res.message)
         }
     };
+    
 
     useEffect(() => {
         if (currentRole === "buyer") {

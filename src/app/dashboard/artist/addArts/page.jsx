@@ -60,7 +60,7 @@ export default function ArtworkForm() {
   };
 
   return (
-    <div className="mx-auto max-w-4xl rounded-3xl bg-white p-8 shadow-sm">
+    <div className="mx-auto max-w-4xl rounded-3xl bg-white my-10 p-8 shadow-sm">
       <div className="mb-8">
         <h1 className="text-3xl font-bold">Add Artwork</h1>
         <p className="mt-2 text-gray-500">

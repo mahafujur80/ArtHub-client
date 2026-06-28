@@ -35,7 +35,7 @@ export function UpdateProfileModal({ user }) {
         } else {
             toast.error(res.error.message || "User update failed")
         }
-        console.log(res)
+       
     };
 
     return (

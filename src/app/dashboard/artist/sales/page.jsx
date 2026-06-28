@@ -1,3 +1,4 @@
+import EmptyMessage from '@/Components/EmptyMessage';
 import { getArtistSales } from '@/lib/api/artist';
 import { getServerSession } from '@/lib/server/getServerSession';
 import {Pagination, Table } from '@heroui/react';
@@ -14,6 +15,10 @@ const ManageArt = async ({searchParams}) => {
     const pages = [];
     for(let i = 1; i <= totalPages; i++) {
         pages.push(i);
+    }
+
+    if(salesHistory.length === 0) {
+        return <EmptyMessage />
     }
 
     return (
