@@ -10,4 +10,11 @@ export const getArtistArtworks = async(artistId, page=1)=>{
 export const getArtistSales = async(artistId, page=1)=>{
     const res = await serverFetch(`/api/artist/sales?artistId=${artistId}&page=${page}`);
     return res;
+};
+
+//SPECIAL
+// GET artist profile data by artist id in artistProfile page
+export const getArtistProfileData = async(artistId)=>{
+    const res = await serverFetch(`/api/artist/profile?artistId=${artistId}`);
+    return res;
 }
