@@ -1,5 +1,7 @@
 import ArtWorkComments from "@/Components/Comments/ArtWorkComents";
 import NoPurchaseComSec from "@/Components/Comments/NoPurchaseComSec";
+import { ArtsEditModal } from "@/Components/Dashboard/ArtsEditModal";
+import { DeleteDialog } from "@/Components/Dashboard/DeleteDialog";
 import { getArtworkById } from "@/lib/api/artwork";
 import { getPlans } from "@/lib/api/plans";
 import { getMyPurchases } from "@/lib/api/purchase";
@@ -24,10 +26,11 @@ const ArtworkDetailPage = async ({ params }) => {
 
   // Check if current user is the artist
   const isArtist = user?.id === art?.artistId;
+  const myArtWork = art?.artistId === user?.id;
 
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-amber-50 py-8 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
 
         {/* Breadcrumb */}
@@ -86,8 +89,7 @@ const ArtworkDetailPage = async ({ params }) => {
 
             {/* Artist Info */}
             <Link
-              // href={`/artists/${art.artistId}`}
-              href='#'
+              href={`/artwork/${art?._id}/artistProfile/${art?.artistId}`}
               className="inline-flex items-center gap-3 group"
             >
               <Image
@@ -107,16 +109,35 @@ const ArtworkDetailPage = async ({ params }) => {
 
             {/* Meta Info Grid */}
             <div className="rounded-2xl border border-orange-100 bg-white p-3 shadow-sm">
-              <div className="flex items-center gap-3">
-                <div className="rounded-xl bg-orange-100 p-1">
-                  <FaCalendarAlt className="h-3 w-3 text-orange-500" />
-                </div>
+              <div className="flex items-center justify-between gap-3">
+                {/* left site */}
+                <div className="flex items-center gap-3" >
+                  <div className="rounded-xl bg-orange-100 p-1">
+                    <FaCalendarAlt className="h-4 w-4 text-orange-500" />
+                  </div>
 
+                  <div>
+                    <p className="text-sm text-gray-500">Uploaded</p>
+                    <p className="text-sm font-medium text-gray-700">
+                      {new Date(art?.createAt).toDateString()}
+                    </p>
+                  </div>
+                </div>
+                {/* right site */}
                 <div>
-                  <p className="text-xs text-gray-500">Uploaded</p>
-                  <p className="text-sm font-medium text-gray-700">
-                    {new Date(art?.createAt).toDateString()}
-                  </p>
+                  {
+                    myArtWork &&
+                    <div className="flex flex-col items-start gap-2">
+                      <p className="text-sm font-medium text-orange-500">
+                        Owned by you
+                      </p>
+
+                      <div className="flex items-center gap-2">
+                        <ArtsEditModal art={art} />
+                        <DeleteDialog id={art._id} />
+                      </div>
+                    </div>
+                  }
                 </div>
               </div>
             </div>
@@ -201,9 +222,10 @@ const ArtworkDetailPage = async ({ params }) => {
 
 
       {
-        !user?.id? <NoPurchaseComSec /> : <ArtWorkComments art={art} user={user} />
+        !user?.id ? <NoPurchaseComSec /> : <ArtWorkComments art={art} user={user} />
       }
     </div>
-)};
+  )
+};
 
 export default ArtworkDetailPage;

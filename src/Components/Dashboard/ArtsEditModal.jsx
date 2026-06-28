@@ -46,7 +46,7 @@ export function ArtsEditModal({ art }) {
         const res = await updateArtwork(art?._id, artworkData)
         if(res.modifiedCount === 1){
             toast.success("Artwork updated successfully")
-            router.refresh('/dashboard/artist/manageArt')
+            router.refresh()
         }
     };
 

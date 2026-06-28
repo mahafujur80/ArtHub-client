@@ -1,19 +1,25 @@
 "use client";
 
 import { deleteArtwork } from "@/lib/server/artist";
-import {AlertDialog, Button} from "@heroui/react";
-import { useRouter } from "next/navigation";
+import { AlertDialog, Button } from "@heroui/react";
+import { usePathname, useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
-export function DeleteDialog({id}) {
-    const router = useRouter()
-    const handleDelete = async () => {
-        const res = await deleteArtwork(id)
-        if(res.deletedCount === 1){
-            toast.success("Artwork deleted successfully")
-            router.refresh('/dashboard/artist/manageArt')
-        }
-    };
+export function DeleteDialog({ id }) {
+  const router = useRouter()
+  const pathName = usePathname();
+
+  const handleDelete = async () => {
+    const res = await deleteArtwork(id)
+    if (res.deletedCount === 1) {
+      toast.success("Artwork deleted successfully")
+      if (pathName === `/artwork/${id}`) {
+        router.push("/artwork");
+      } else {
+        router.refresh();
+      }
+    }
+  };
   return (
     <AlertDialog>
       <Button variant="danger-soft">Delete</Button>

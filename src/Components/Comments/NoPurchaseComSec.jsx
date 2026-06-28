@@ -17,7 +17,7 @@ const NoPurchaseComSec = () => {
     {/* Comment Input */}
     <div className="mb-8">
       <div className="h-10 w-full rounded-xl border border-orange-500 p-4 flex items-center justify-center text-orange-500 font-semibold">
-          <p>Please Purchase Artwork to leave a review  <Link className='text-blue-500' href='/login' >Login</Link> to Purchase</p>
+          <p>Please Purchase Artwork to leave a review  <Link className='text-blue-500' href='/login' >Login</Link> to Purchase and Artist also can't leave review</p>
       </div>
     </div>
   </div>
