@@ -15,7 +15,7 @@ const getJwtToken = async()=>{
         console.log('no jwt token data found my boy ', error);
         return null;
     }
-}
+};
 
 
 // server fetch
@@ -26,4 +26,4 @@ export const serverFetch = async (api) => {
         headers: {authorization: `Bearer ${token}`}
     });
     return await response.json();
-}
+};

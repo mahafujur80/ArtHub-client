@@ -20,7 +20,7 @@ const BoughtArtworks = async ({searchParams}) => {
     }
 
     if(myArtworks.length === 0) {
-        <EmptyMessage />
+      return  <EmptyMessage />
     }
 
     return (

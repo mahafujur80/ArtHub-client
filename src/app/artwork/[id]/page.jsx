@@ -3,8 +3,8 @@ import NoPurchaseComSec from "@/Components/Comments/NoPurchaseComSec";
 import { ArtsEditModal } from "@/Components/Dashboard/ArtsEditModal";
 import { DeleteDialog } from "@/Components/Dashboard/DeleteDialog";
 import { getArtworkById } from "@/lib/api/artwork";
+import { getMyTotalPurchase } from "@/lib/api/buyer";
 import { getPlans } from "@/lib/api/plans";
-import { getMyPurchases } from "@/lib/api/purchase";
 import { getServerSession } from "@/lib/server/getServerSession";
 import Image from "next/image";
 import Link from "next/link";
@@ -22,7 +22,7 @@ const ArtworkDetailPage = async ({ params }) => {
   const art = await getArtworkById(id)
   const user = await getServerSession()
   const plan = await getPlans(user?.plan)
-  const purchases = await getMyPurchases(user?.id)
+  const purchases = await getMyTotalPurchase(user?.id)
 
   // Check if current user is the artist
   const isArtist = user?.id === art?.artistId;

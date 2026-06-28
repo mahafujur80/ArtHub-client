@@ -10,9 +10,11 @@ export default async function BuyerOverview() {
   const planLimits = await getPlans(user?.plan)
   const purchases = await getMyTotalPurchase(user?.id)
 
+  console.log(planLimits, 'planLimit')
+  console.log(user, 'user')
 
   const purchaseCount = purchases.length; //  // data from pagination
-  const remainingPurchases = planLimits.maxPurchase === -1 ? "Unlimited" : planLimits.maxPurchase - purchaseCount < 0 && 0;
+  const remainingPurchases = planLimits?.maxPurchase === -1 ? "Unlimited" : Math.max(0, planLimits?.maxPurchase - purchaseCount);
 
   return (
     <div className="space-y-8 p-4">
@@ -55,7 +57,7 @@ export default async function BuyerOverview() {
               </p>
 
               <h3 className="text-3xl font-bold mt-2 capitalize text-orange-500">
-                {user.plan}
+                {user?.plan}
               </h3>
             </div>
 
@@ -71,7 +73,7 @@ export default async function BuyerOverview() {
               </p>
 
               <h3 className="text-3xl font-bold mt-2 text-orange-500">
-                {remainingPurchases}
+                {remainingPurchases || 0}
               </h3>
             </div>
 

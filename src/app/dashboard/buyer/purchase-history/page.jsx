@@ -18,7 +18,7 @@ const PurchaseHistory = async ({ searchParams }) => {
     }
    
     if(availableHistory.length === 0) {
-        <EmptyMessage />
+      return <EmptyMessage />
     }
 
     return (
