@@ -6,7 +6,7 @@ const loading = () => {
     return (
         <div className='min-h-screen container mx-auto px-6 py-10' >
 
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
                 {
                     totalData.map((item, index) => {
                         return (

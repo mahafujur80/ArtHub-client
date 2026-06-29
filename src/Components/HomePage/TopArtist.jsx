@@ -56,10 +56,10 @@ export default function TopArtists() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
                 >
-                    <h2 className="text-4xl font-bold text-gray-900">
+                    <h2 className="text-xl md:text-3xl font-bold text-gray-900">
                         Top Artists
                     </h2>
-                    <p className="mt-3 text-gray-600">
+                    <p className="mt-3 text-gray-600 text-sm ">
                         Meet our best-selling artists loved by collectors worldwide.
                     </p>
                 </motion.div>

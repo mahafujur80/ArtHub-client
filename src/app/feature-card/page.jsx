@@ -32,7 +32,7 @@ const FeatureCard = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
             >
-                <h1 className="text-center text-3xl font-bold text-gray-900 mb-2">Our Featured Artworks</h1>
+                <h1 className="text-center text-xl md:text-3xl font-bold text-gray-900 mb-2">Our Featured Artworks</h1>
                 <p className="text-center text-sm text-gray-500 mb-8">
                     Check out our featured artworks below
                 </p>

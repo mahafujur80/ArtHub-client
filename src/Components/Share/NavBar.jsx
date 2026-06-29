@@ -99,7 +99,9 @@ export default function NavBar() {
                                     </div>
                                     <Dropdown.Menu>
                                         <Dropdown.Item id="dashboard" textValue="Dashboard">
-                                            <Link href={`/dashboard/${user?.role}`} ><Label>Dashboard</Label></Link>
+                                            <Link href={`/dashboard/${user?.role}`} className="no-underline block w-full" >
+                                               <Label>Dashboard</Label>
+                                            </Link>
                                         </Dropdown.Item>
                                         <Dropdown.Item id="logout" textValue="Logout" variant="danger">
                                             <div onClick={handleLogout} className="flex w-full items-center justify-between gap-2">

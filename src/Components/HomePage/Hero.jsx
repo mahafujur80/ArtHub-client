@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { IoIosColorPalette } from "react-icons/io";
 
 export default function HeroSection() {
   const fadeInUp = {
@@ -39,7 +40,8 @@ export default function HeroSection() {
             <motion.span 
               variants={fadeInUp}
               className="inline-flex items-center rounded-full px-4 py-2 text-sm font-medium shadow-sm bg-white text-slate-800 border border-slate-100"
-            >
+            > 
+            <IoIosColorPalette className="text-orange-500 h-7 w-7 mr-2" />
             Original Artworks
             </motion.span>
 

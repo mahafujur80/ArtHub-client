@@ -80,8 +80,8 @@ const AllCategoryPage = () => {
     return (
         <div className='container mx-auto py-10 px-6 overflow-hidden'>
             <div>
-                <h1 className="text-center text-3xl font-bold text-gray-900 mb-2">Artwork Categories</h1>
-                <p className="text-center text-sm text-gray-500 mb-8">
+                <h1 className="text-center text-xl md:text-3xl  font-bold text-gray-900 mb-2">Artwork Categories</h1>
+                <p className="text-center text-sm  text-gray-500 mb-8">
                     Browse artworks by category to find inspiration
                 </p>
             </div>

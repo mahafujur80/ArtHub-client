@@ -10,13 +10,13 @@ const NoPurchaseComSec = () => {
     
     {/* Section Title */}
     <h2 className="text-lg md:text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-      <FaComments className="w-6 h-6 text-orange-500" />
+      <FaComments className="w-6 h-6 text-lg md:text-xl text-orange-500" />
         Review & Comments
     </h2>
 
     {/* Comment Input */}
     <div className="mb-8">
-      <div className="h-10 w-full rounded-xl border border-orange-500 p-4 flex items-center justify-center text-orange-500 font-semibold">
+      <div className="h-10 w-full rounded-xl border border-orange-500 p-10 md:p-5 flex items-center justify-center text-orange-500 font-semibold">
           <p className='text-xs md:text-base' >Please Purchase Artwork to leave a review  <Link className='text-blue-500' href='/login' >Login</Link> to Purchase and Artist also can't leave review</p>
       </div>
     </div>
