@@ -15,6 +15,7 @@ import {
   FaShoppingCart,
   FaClock
 } from "react-icons/fa";
+import LoginBtnForForm from "../LoginBtnForForm";
 
 
 const ArtworkDetailPage = async ({ params }) => {
@@ -164,7 +165,7 @@ const ArtworkDetailPage = async ({ params }) => {
               </div>
 
               {/* Purchase Button */}
-              {isArtist ? (
+              {isArtist ?
                 <div className="relative group">
                   <button
                     disabled
@@ -177,36 +178,40 @@ const ArtworkDetailPage = async ({ params }) => {
                     Artist cannot purchase their own artwork
                   </div>
                 </div>
-              ) : (
-                <form action={!user?.id ? `/login?redirect=/artwork/${art._id}` : "/api/payments"} method="POST">
-                  <div className="w-full bg-white text-orange-600 hover:bg-orange-50 font-bold  rounded-xl transition-all duration-300 transform hover:scale-[1.02] hover:shadow-xl flex items-center justify-center gap-3 group cursor-pointer">
+                :
+                user?.id ?
+                  <form action="/api/payments" method="POST">
+                    <div className="w-full bg-white text-orange-600 hover:bg-orange-50 font-bold  rounded-xl transition-all duration-300 transform hover:scale-[1.02] hover:shadow-xl flex items-center justify-center gap-3 group cursor-pointer">
 
-                    <input name="price" type="hidden" value={art?.price} />
-                    <input name="artworkName" type="hidden" value={art?.title} />
-                    <input name="artistName" type="hidden" value={art?.artist} />
-                    <input name="artistId" type="hidden" value={art?.artistId} />
-                    <input name="artworkId" type="hidden" value={art?._id} />
-                    <input name="image" type="hidden" value={art?.image} />
+                      <input name="price" type="hidden" value={art?.price} />
+                      <input name="artworkName" type="hidden" value={art?.title} />
+                      <input name="artistName" type="hidden" value={art?.artist} />
+                      <input name="artistId" type="hidden" value={art?.artistId} />
+                      <input name="artworkId" type="hidden" value={art?._id} />
+                      <input name="image" type="hidden" value={art?.image} />
 
-                    {
-                      plan?.maxPurchase !== -1 &&
-                        purchases?.length >= plan?.maxPurchase ?
-                        <Link href="/pricing">
-                          <button className="w-full  p-3">
+                      {
+                        plan?.maxPurchase !== -1 &&
+                          purchases?.length >= plan?.maxPurchase ?
+                          <Link
+                            href="/pricing"
+                            className="w-full flex items-center justify-center p-3"
+                          >
                             Upgrade Now For More Purchase
+                          </Link>
+
+                          :
+                          <button type="submit" className="w-full flex items-center justify-center gap-5 p-3">
+                            Purchase Now
+                            <FaShoppingCart className="w-5 h-5 transition-transform group-hover:-translate-x-1" />
                           </button>
-                        </Link>
+                      }
 
-                        :
-                        <button type="submit" className="w-full flex items-center justify-center gap-5 p-3">
-                          Purchase Now
-                          <FaShoppingCart className="w-5 h-5 transition-transform group-hover:-translate-x-1" />
-                        </button>
-                    }
-
-                  </div>
-                </form>
-              )}
+                    </div>
+                  </form>
+                  :
+                  <LoginBtnForForm id={art._id} />
+              }
 
               {!isArtist && (
                 <p className="text-orange-100 text-xs text-center mt-3">
