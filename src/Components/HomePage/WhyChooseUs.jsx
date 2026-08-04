@@ -1,5 +1,7 @@
+"use client";
 import React from 'react';
 import { FaGlobe, FaLock, FaPalette, FaHandshake } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 
 const WhyChooseUs = () => {
   const features = [
@@ -26,23 +28,36 @@ const WhyChooseUs = () => {
   ];
 
   return (
-    <section className="py-16 bg-white dark:bg-gray-900">
+    <section className="py-16 bg-white dark:bg-gray-900 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
+        <motion.div 
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-12"
+        >
           <h2 className="text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl">
             Why Choose ArtHub?
           </h2>
           <p className="mt-4 max-w-2xl text-xl text-gray-500 dark:text-gray-300 mx-auto">
             We provide the best platform for artists to showcase their work and for collectors to discover masterpieces.
           </p>
-        </div>
+        </motion.div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {features.map((feature, index) => (
-            <div key={index} className="bg-gray-50 dark:bg-gray-800 rounded-xl p-8 text-center hover:shadow-lg transition-shadow duration-300 flex flex-col items-center">
+            <motion.div 
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.15 }}
+              className="bg-gray-50 dark:bg-gray-800 rounded-xl p-8 text-center hover:shadow-lg transition-shadow duration-300 flex flex-col items-center"
+            >
               <div className="text-4xl mb-4">{feature.icon}</div>
               <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{feature.title}</h3>
               <p className="text-gray-600 dark:text-gray-400">{feature.description}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

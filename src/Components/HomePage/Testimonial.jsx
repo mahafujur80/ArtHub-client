@@ -1,4 +1,6 @@
+"use client";
 import React from 'react';
+import { motion } from 'framer-motion';
 
 const Testimonial = () => {
   const testimonials = [
@@ -23,16 +25,29 @@ const Testimonial = () => {
   ];
 
   return (
-    <section className="py-16 bg-gray-50 dark:bg-gray-800">
+    <section className="py-16 bg-gray-50 dark:bg-gray-800 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-16"
+        >
           <h2 className="text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl">
             What Our Community Says
           </h2>
-        </div>
+        </motion.div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {testimonials.map((test, index) => (
-            <div key={index} className="bg-white dark:bg-gray-900 rounded-xl shadow-md p-8 relative">
+            <motion.div 
+              key={index}
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.2 }}
+              className="bg-white dark:bg-gray-900 rounded-xl shadow-md p-8 relative"
+            >
               <div className="text-indigo-500 text-4xl absolute top-4 left-4 opacity-20">"</div>
               <p className="text-gray-600 dark:text-gray-300 italic mb-6 relative z-10 mt-4">
                 {test.content}
@@ -44,7 +59,7 @@ const Testimonial = () => {
                   <p className="text-sm text-gray-500 dark:text-gray-400">{test.role}</p>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
