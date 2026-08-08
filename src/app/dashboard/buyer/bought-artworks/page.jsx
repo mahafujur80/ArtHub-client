@@ -25,7 +25,10 @@ const BoughtArtworks = async ({searchParams}) => {
 
     return (
         <div className="p-4">
-
+            <div className="mb-6">
+                <h1 className="text-2xl md:text-3xl font-bold text-gray-900">My Collection</h1>
+                <p className="text-gray-500 mt-2">Browse the artworks you have purchased.</p>
+            </div>
             <div className='grid grid-cols-2 md:grid-cols-3 gap-3'>
                 {
                     myArtworks.map(artwork => <ArtworkCard artwork={artwork} key={artwork?._id} />)

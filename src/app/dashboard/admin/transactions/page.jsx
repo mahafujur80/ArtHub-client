@@ -23,6 +23,10 @@ const AllTransactionPage = async ({ searchParams }) => {
 
     return (
         <div className='p-5'>
+            <div className="mb-6">
+                <h1 className="text-2xl md:text-3xl font-bold text-gray-900">All Transactions</h1>
+                <p className="text-gray-500 mt-2">Monitor all payments and transactions across the platform.</p>
+            </div>
             <Table className="bg-orange-500">
                 <Table.ScrollContainer>
                     <Table.Content aria-label="Team members" className="min-w-[600px]">
