@@ -46,9 +46,9 @@ const HowItWorks = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.2 }}
-              className="relative flex flex-col items-center text-center"
+              className="relative flex flex-col items-center text-center p-6 rounded-xl hover:shadow-xl hover:bg-white dark:hover:bg-gray-700 transition-all duration-300 hover:-translate-y-2 group"
             >
-              <div className="w-16 h-16 bg-orange-500 text-white rounded-full flex items-center justify-center text-2xl font-bold mb-6 z-10 shadow-lg">
+              <div className="w-16 h-16 bg-orange-500 text-white rounded-full flex items-center justify-center text-2xl font-bold mb-6 z-10 shadow-lg group-hover:shadow-orange-500/50 transition-shadow duration-300">
                 {step.num}
               </div>
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">{step.title}</h3>

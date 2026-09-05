@@ -7,10 +7,11 @@ import WhyChooseUs from '@/Components/HomePage/WhyChooseUs';
 import HowItWorks from '@/Components/HomePage/HowItWorks';
 import FAQ from '@/Components/HomePage/FAQ';
 import Testimonial from '@/Components/HomePage/Testimonial';
+import CallToAction from '@/Components/HomePage/CallToAction';
 
 const MainPage = () => {
   return (
-    <div className='min-h-screen  py-5'>
+    <div className='min-h-screen py-5 bg-white'>
       <Hero/>
       <HowItWorks/>
       <FeatureCard/>
@@ -18,6 +19,7 @@ const MainPage = () => {
       <TopArtists/>
       <WhyChooseUs/>
       <Testimonial/>
+      <CallToAction/>
       <FAQ/>
     </div>
   );

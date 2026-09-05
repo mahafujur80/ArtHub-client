@@ -46,14 +46,14 @@ const Testimonial = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.2 }}
-              className="bg-white dark:bg-gray-900 rounded-xl shadow-md p-8 relative"
+              className="bg-white dark:bg-gray-900 rounded-xl shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300 p-8 relative flex flex-col h-full"
             >
-              <div className="text-indigo-500 text-4xl absolute top-4 left-4 opacity-20">"</div>
-              <p className="text-gray-600 dark:text-gray-300 italic mb-6 relative z-10 mt-4">
+              <div className="text-orange-500 text-6xl absolute top-4 left-4 opacity-10 leading-none select-none">"</div>
+              <p className="text-gray-600 dark:text-gray-300 italic mb-6 relative z-10 mt-4 flex-grow">
                 {test.content}
               </p>
-              <div className="flex items-center">
-                <img src={test.image} alt={test.name} className="w-12 h-12 rounded-full mr-4" />
+              <div className="flex items-center mt-auto border-t border-gray-100 dark:border-gray-800 pt-4">
+                <img src={test.image} alt={test.name} className="w-12 h-12 rounded-full mr-4 object-cover" />
                 <div>
                   <h4 className="font-bold text-gray-900 dark:text-white">{test.name}</h4>
                   <p className="text-sm text-gray-500 dark:text-gray-400">{test.role}</p>

@@ -119,7 +119,7 @@ export default function HeroSection() {
 
                     <motion.div variants={fadeInUp}>
                       <Link href="/artwork">
-                        <button className="mt-8 rounded-xl bg-orange-500 px-8 py-4 text-lg font-semibold text-white transition duration-300 hover:opacity-90 hover:scale-105 active:scale-95 shadow-lg shadow-orange-500/20">
+                        <button className="mt-8 rounded-xl bg-orange-500 px-8 py-4 text-lg font-semibold text-white transition-all duration-300 hover:bg-orange-600 hover:scale-105 hover:shadow-xl hover:shadow-orange-500/30 active:scale-95 shadow-lg shadow-orange-500/20">
                           Browse Artworks
                         </button>
                       </Link>
@@ -154,13 +154,13 @@ export default function HeroSection() {
                     animate={isActive ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
                     transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
                   >
-                    <div className="absolute h-64 w-64 rounded-full bg-orange-200 blur-3xl opacity-40 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+                    <div className="absolute h-72 w-72 rounded-full bg-orange-200 blur-3xl opacity-40 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
                     
                     <motion.div 
                       className="relative z-10 w-full max-w-md aspect-square"
-                      animate={isActive ? { y: [0, -15, 0] } : { y: 0 }}
+                      animate={isActive ? { y: [0, -20, 0] } : { y: 0 }}
                       transition={{
-                        duration: 4,
+                        duration: 5,
                         repeat: Infinity,
                         ease: "easeInOut"
                       }}

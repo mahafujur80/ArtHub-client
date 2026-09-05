@@ -76,7 +76,7 @@ export default function TopArtists() {
                         <motion.div
                             key={artist.id}
                             variants={cardVariants}
-                            className="bg-white border border-gray-100 rounded-2xl p-8 text-center shadow-sm hover:shadow-xl hover:scale-105 hover:-translate-y-1 transition-all duration-300"
+                            className="bg-white border border-gray-100 rounded-2xl p-8 text-center shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group"
                         >
                             <div className="relative w-24 h-24 mx-auto">
                                 <Image

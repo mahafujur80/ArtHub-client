@@ -57,9 +57,13 @@ const FAQ = () => {
                 onClick={() => toggleFAQ(index)}
               >
                 <span className="font-semibold text-gray-900 dark:text-white">{faq.question}</span>
-                <span className="text-gray-500 dark:text-gray-400">
+                <motion.span 
+                  className="text-orange-500 flex items-center justify-center text-2xl font-light"
+                  animate={{ rotate: openIndex === index ? 180 : 0 }}
+                  transition={{ duration: 0.3 }}
+                >
                   {openIndex === index ? '−' : '+'}
-                </span>
+                </motion.span>
               </button>
               <AnimatePresence>
                 {openIndex === index && (

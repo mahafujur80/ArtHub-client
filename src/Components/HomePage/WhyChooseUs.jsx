@@ -40,7 +40,7 @@ const WhyChooseUs = () => {
           <h2 className="text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl">
             Why Choose ArtHub?
           </h2>
-          <p className="mt-4 max-w-2xl text-xl text-gray-500 dark:text-gray-300 mx-auto">
+          <p className="mt-4 text-sm max-w-2xl text-gray-500 dark:text-gray-300 mx-auto">
             We provide the best platform for artists to showcase their work and for collectors to discover masterpieces.
           </p>
         </motion.div>
@@ -52,9 +52,9 @@ const WhyChooseUs = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.15 }}
-              className="bg-gray-50 dark:bg-gray-800 rounded-xl p-8 text-center hover:shadow-lg transition-shadow duration-300 flex flex-col items-center"
+              className="bg-gray-50 dark:bg-gray-800 rounded-xl p-8 text-center shadow-sm hover:shadow-xl hover:scale-[1.02] hover:-translate-y-2 transition-all duration-300 flex flex-col items-center group"
             >
-              <div className="text-4xl mb-4">{feature.icon}</div>
+              <div className="text-4xl mb-6 bg-orange-100 dark:bg-orange-900/30 p-4 rounded-full transition-transform duration-300 group-hover:scale-110 group-hover:shadow-lg shadow-orange-500/20">{feature.icon}</div>
               <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{feature.title}</h3>
               <p className="text-gray-600 dark:text-gray-400">{feature.description}</p>
             </motion.div>
