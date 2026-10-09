@@ -11,14 +11,12 @@ import {
 
 export default async function ArtistOverview() {
   const user = await getServerSession();
-  const artWorkData = await getArtistArtworks(user?.id);
-  const salesData = await getArtistSales(user?.id);
-  const allSales = salesData.resultAll;
-  const totalArtworks = artWorkData.totalData;
+  const artWorkData = user?.id ? await getArtistArtworks(user.id) : null;
+  const salesData = user?.id ? await getArtistSales(user.id) : null;
+  const allSales = salesData?.resultAll ?? [];
+  const totalArtworks = artWorkData?.totalData ?? 0;
 
-  const recentArtworks = artWorkData.allArtwork.slice(0, 3);
-  
-
+  const recentArtworks = (artWorkData?.allArtwork ?? []).slice(0, 3);
 
   const revenue = allSales.reduce((total, price) => total + Number(price.amount), 0);
 

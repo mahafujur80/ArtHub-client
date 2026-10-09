@@ -1,3 +1,4 @@
+'use server';
 
 import { serverDelete, serverMutation } from "./serverMutation";
 

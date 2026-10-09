@@ -16,22 +16,28 @@ const ArtWorkComments = ({ art, user }) => {
 
     // for after comment revalidate 
     const fetchComment = async () => {
-        const res = await getAllComments(art?._id)
-        setComments(res)
-    }
-
+        if (!art?._id) return;
+        const res = await getAllComments(art._id);
+        setComments(Array.isArray(res) ? res : []);
+    };
 
     useEffect(() => {
         const loadData = async () => {
-            const [comments, buyProved] = await Promise.all([
-                getAllComments(art?._id),
-                getArtworkBuyProved(art?._id, user?.id)
-            ])
-            setComments(comments),
-                setBuyProved(buyProved)
+            if (!art?._id) return;
+            try {
+                const [commentsData, buyProvedData] = await Promise.all([
+                    getAllComments(art._id),
+                    user?.id ? getArtworkBuyProved(art._id, user.id) : null
+                ]);
+                setComments(Array.isArray(commentsData) ? commentsData : []);
+                setBuyProved(buyProvedData || {});
+            } catch (err) {
+                console.error("Error loading comments:", err);
+                setComments([]);
+            }
         };
-        loadData()
-    }, [art?._id, user?.id])
+        loadData();
+    }, [art?._id, user?.id]);
 
 
     const handlePostComment = async (e) => {

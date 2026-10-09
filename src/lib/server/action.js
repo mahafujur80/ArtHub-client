@@ -20,10 +20,25 @@ const getJwtToken = async()=>{
 
 // server fetch
 export const serverFetch = async (api) => {
-    const token = await getJwtToken();
-    
-    const response = await fetch(`${baseUrl}${api}`,{
-        headers: {authorization: `Bearer ${token}`}
-    });
-    return await response.json();
+    try {
+        const token = await getJwtToken();
+        const reqHeaders = {};
+        if (token) {
+            reqHeaders.authorization = `Bearer ${token}`;
+        }
+        
+        const response = await fetch(`${baseUrl}${api}`, {
+            headers: reqHeaders,
+            cache: 'no-store'
+        });
+
+        const contentType = response.headers.get("content-type");
+        if (contentType && contentType.includes("application/json")) {
+            return await response.json();
+        }
+        return null;
+    } catch (error) {
+        console.error(`Error fetching ${api}:`, error);
+        return null;
+    }
 };

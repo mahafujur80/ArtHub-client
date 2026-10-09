@@ -17,14 +17,19 @@ import {
 } from "react-icons/fa";
 import LoginBtnForForm from "../LoginBtnForForm";
 
+import { notFound } from "next/navigation";
+
 
 const ArtworkDetailPage = async ({ params }) => {
   const { id } = await params;
-  const art = await getArtworkById(id)
-  const user = await getServerSession()
+  const art = await getArtworkById(id);
+  if (!art || !art._id) {
+    notFound();
+  }
+  const user = await getServerSession();
  
-  const plan = await getPlans(user?.plan)
-  const purchases = await getMyTotalPurchase(user?.id)
+  const plan = user?.plan ? await getPlans(user.plan) : null;
+  const purchases = (user?.id && user?.role === 'buyer') ? await getMyTotalPurchase(user.id) : [];
 
   // Check if current user is the artist
   const isArtist = user?.id === art?.artistId;
@@ -193,7 +198,8 @@ const ArtworkDetailPage = async ({ params }) => {
 
                       {
                         plan?.maxPurchase !== -1 &&
-                          purchases?.length >= plan?.maxPurchase ?
+                          Array.isArray(purchases) &&
+                          purchases.length >= plan?.maxPurchase ?
                           <Link
                             href="/pricing"
                             className="w-full flex items-center justify-center p-3"

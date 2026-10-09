@@ -1,3 +1,5 @@
+'use server';
+
 import { serverFetch } from "../server/action";
 
 // get artist artworks by artist id

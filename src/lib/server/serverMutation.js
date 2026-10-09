@@ -18,23 +18,48 @@ const getJwtToken = async()=>{
 
 const baseUrl = process.env.NEXT_PUBLIC_API_URL;
 export const serverMutation = async (api, data, method = "POST") => {
-    const token = await getJwtToken();
-    const response = await fetch(`${baseUrl}${api}`, {
-        method: method,
-        headers: {
+    try {
+        const token = await getJwtToken();
+        const reqHeaders = {
             "Content-Type": "application/json",
-             authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(data),
-    });
-    return await response.json();
+        };
+        if (token) {
+            reqHeaders.authorization = `Bearer ${token}`;
+        }
+        const response = await fetch(`${baseUrl}${api}`, {
+            method: method,
+            headers: reqHeaders,
+            body: JSON.stringify(data),
+        });
+        const contentType = response.headers.get("content-type");
+        if (contentType && contentType.includes("application/json")) {
+            return await response.json();
+        }
+        return { success: response.ok };
+    } catch (error) {
+        console.error(`Error in serverMutation for ${api}:`, error);
+        return { success: false, message: error.message };
+    }
 }
 
 export const serverDelete = async (api, id) =>{
-    const token = await getJwtToken();
- const res = await fetch(`${baseUrl}${api}${id}`,{
-    method: "DELETE",
-    headers: {authorization: `Bearer ${token}`}
- })
- return await res.json();
+    try {
+        const token = await getJwtToken();
+        const reqHeaders = {};
+        if (token) {
+            reqHeaders.authorization = `Bearer ${token}`;
+        }
+        const res = await fetch(`${baseUrl}${api}${id}`,{
+            method: "DELETE",
+            headers: reqHeaders
+        });
+        const contentType = res.headers.get("content-type");
+        if (contentType && contentType.includes("application/json")) {
+            return await res.json();
+        }
+        return { success: res.ok };
+    } catch (error) {
+        console.error(`Error in serverDelete for ${api}${id}:`, error);
+        return { success: false, message: error.message };
+    }
 }

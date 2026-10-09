@@ -1,3 +1,5 @@
+'use server';
+
 import { serverFetch } from "../server/action";
 
 export const getMyPurchases = async(userId, page=1)=>{

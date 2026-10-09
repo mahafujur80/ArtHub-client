@@ -1,3 +1,5 @@
+'use server';
+
 import { serverFetch } from "../server/action";
 
 export const getAllArtworks = async (search="", minPrice="", maxPrice="", category="", sort="", page=1) => {

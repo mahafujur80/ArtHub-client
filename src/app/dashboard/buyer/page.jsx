@@ -7,14 +7,11 @@ import { FaShoppingBag, FaCrown, FaMoneyBillWave, FaArrowRight } from "react-ico
 export default async function BuyerOverview() {
 
   const user = await getServerSession()
-  const planLimits = await getPlans(user?.plan)
-  const purchases = await getMyTotalPurchase(user?.id)
+  const planLimits = user?.plan ? await getPlans(user.plan) : null
+  const purchases = (user?.id && user?.role === 'buyer') ? await getMyTotalPurchase(user.id) : null
 
-  console.log(planLimits, 'planLimit')
-  console.log(user, 'user')
-
-  const purchaseCount = purchases.length; //  // data from pagination
-  const remainingPurchases = planLimits?.maxPurchase === -1 ? "Unlimited" : Math.max(0, planLimits?.maxPurchase - purchaseCount);
+  const purchaseCount = Array.isArray(purchases) ? purchases.length : 0;
+  const remainingPurchases = planLimits?.maxPurchase === -1 ? "Unlimited" : Math.max(0, (planLimits?.maxPurchase ?? 0) - purchaseCount);
 
   return (
     <div className="space-y-8 p-4">

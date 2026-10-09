@@ -1,3 +1,5 @@
+'use server';
+
 import { serverFetch } from "../server/action";
 import { serverMutation } from "../server/serverMutation";
 

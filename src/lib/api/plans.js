@@ -1,6 +1,9 @@
-import { serverFetch } from "../server/action"
+'use server';
+
+import { serverFetch } from "../server/action";
 
 export const getPlans = async(plan)=>{
-    const res = serverFetch(`/api/plans?plan=${plan}`)
+    if (!plan) return null;
+    const res = await serverFetch(`/api/plans?plan=${plan}`);
     return res;
-}
+};
