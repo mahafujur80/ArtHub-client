@@ -22,6 +22,7 @@ const ArtworkDetailPage = async ({ params }) => {
   const { id } = await params;
   const art = await getArtworkById(id)
   const user = await getServerSession()
+ 
   const plan = await getPlans(user?.plan)
   const purchases = await getMyTotalPurchase(user?.id)
 
